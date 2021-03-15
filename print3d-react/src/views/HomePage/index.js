@@ -5,8 +5,9 @@ import berandaImg from "./beranda.png";
 
 const useStyle = makeStyles((theme) => ({
   root: {
-    backgroundColor: theme.palette.primary.main,
-    backgroundImage: `url(${berandaImg})`,
+    // backgroundColor: theme.palette.primary.main,
+    background: `url(${berandaImg}), ${theme.palette.primary.main}`,
+    backgroundRepeat: 'no-repeat',
     backgroundSize: "100%",
     minHeight: "100vh",
     overflow: "auto",
