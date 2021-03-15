@@ -1,26 +1,38 @@
 import * as React from "react";
-import { Button as Tombol, makeStyles, Typography } from "@material-ui/core";
+import { Button, makeStyles, Typography } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
-  tombol: {
-    boxShadow: "0 0",
+  tombolGaris: {
+    borderTop: `3px solid ${theme.palette.primary.main}`,
+    borderBottom: `3px solid ${theme.palette.primary.main}`,
+    borderRadius: 0,
+    padding: `2px ${theme.spacing(2)}px`,
   },
 }));
 
-function Button({ children, variant }) {
+function Tombol({ children, ...props }) {
   const classes = useStyles();
-  if (variant === "line") {
-    return <Tombol>{children}</Tombol>;
+  if (props.variant === "lined") {
+    return (
+      <Button className={classes.tombolGaris} color="primary" disableElevation>
+        <i>{children}</i>
+      </Button>
+    );
   }
   return (
-    <Tombol
+    <Button
+      disableElevation
       className={classes.tombol}
-      variant={variant === "contained" ? variant : null}
+      variant={props.variant || "contained"}
       color="primary"
     >
-      <Typography><b>{children}</b></Typography>
-    </Tombol>
+      <Typography>
+        <i>
+          <b>{children}</b>
+        </i>
+      </Typography>
+    </Button>
   );
 }
 
-export default Button;
+export default Tombol;
