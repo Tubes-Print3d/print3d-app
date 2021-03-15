@@ -11,14 +11,14 @@ Perangkat lunak Sistem Informasi **Print3D!** ini merupakan perangkat lunak berb
 - Andrew S (1301180390)
 - Rezqie Hardi Pratama (1301184119)
 
-## Cara Menjalankan (developer)
+## Cara Menjalankan (untuk Developer)
 
-### Prerequisity
+### Prerequisites
 
 * `node`
 * `npm` atau `yarn`
 
-### Instalasi menggunakan `yarn`:
+### Instalasi menggunakan `yarn` (rekomendasi):
 
 1. Clone repository ke folder lokal.
 2. Buka terminal atau cmd di folder project `print3d`.
