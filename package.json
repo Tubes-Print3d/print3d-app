@@ -15,5 +15,6 @@
   "bugs": {
     "url": "https://github.com/Tubes-Print3d/print3d/issues"
   },
-  "homepage": "https://github.com/Tubes-Print3d/print3d#readme"
+  "homepage": "https://github.com/Tubes-Print3d/print3d#readme",
+  "version": "0.0.0"
 }
