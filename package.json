@@ -1,0 +1,20 @@
+{
+  "name": "print3d",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "dev": "cd print3d-react && yarn dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tubes-Print3d/print3d.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Tubes-Print3d/print3d/issues"
+  },
+  "homepage": "https://github.com/Tubes-Print3d/print3d#readme",
+  "version": "0.2.0"
+}
