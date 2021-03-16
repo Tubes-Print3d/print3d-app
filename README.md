@@ -2,6 +2,9 @@
 
 Perangkat lunak Sistem Informasi **Print3D!** ini merupakan perangkat lunak berbasis aplikasi yang diakses melalui website yang digunakan sebagai platform *e-commerce* yang fungsi utamanya adalah membantu pelanggan yang ingin mencetak produk 3D dari model baik yang diunggah sendiri ataupun dari model yang diunggah secara publik dengan royalti tertentu.
 
+> **Update:** Dokumen mod-5 telah ditambahkan!  
+> **Link:** [MOD5.docx](https://github.com/Tubes-Print3d/print3d/tree/main/docs/MOD5.docx), [snapshots](https://github.com/Tubes-Print3d/print3d/tree/main/docs/snapshots)
+
 ## Tim Pengembang
 
 **Print3D!** ditulis oleh kelompok 8 yang beranggotakan:
