@@ -12730,9 +12730,9 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"print3d-react@workspace:.":
+"print3d-app@workspace:.":
   version: 0.0.0-use.local
-  resolution: "print3d-react@workspace:."
+  resolution: "print3d-app@workspace:."
   dependencies:
     "@material-ui/core": ^4.11.3
     "@testing-library/jest-dom": ^5.11.4
