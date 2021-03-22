@@ -1,3 +1,6 @@
 [submodule "server"]
 	path = server
 	url = https://github.com/Tubes-Print3d/printe3d-api.git
+[submodule "api"]
+	path = api
+	url = https://github.com/Tubes-Print3d/print3d-api.git
