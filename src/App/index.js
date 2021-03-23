@@ -1,8 +1,5 @@
 import * as React from "react";
-import {
-  ThemeProvider,
-  createMuiTheme,
-} from "@material-ui/core/styles";
+import { ThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 
 import "./fonts.css";
 import "./App.css";
@@ -13,10 +10,11 @@ const theme = createMuiTheme({
     primary: {
       main: "#FFBB00",
     },
+    hitam: {
+      main: "#0E0A0A",
+    },
   },
 });
-
-
 
 function App() {
   return (
