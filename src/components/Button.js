@@ -14,14 +14,13 @@ function Tombol({ children, ...props }) {
   const classes = useStyles();
   if (props.variant === "lined") {
     return (
-      <Button className={classes.tombolGaris} color="primary" disableElevation>
+      <Button className={classes.tombolGaris} color="primary">
         <i>{children}</i>
       </Button>
     );
   }
   return (
     <Button
-      disableElevation
       className={classes.tombol}
       variant={props.variant || "contained"}
       color="primary"
