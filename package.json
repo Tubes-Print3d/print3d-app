@@ -1,7 +1,6 @@
 {
   "name": "print3d-app",
   "version": "0.3.0",
-  "private": true,
   "dependencies": {
     "@material-ui/core": "^4.11.3",
     "@testing-library/jest-dom": "^5.11.4",
@@ -37,5 +36,13 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "main": "index.js",
+  "repository": "git@github.com:Tubes-Print3d/print3d-app.git",
+  "author": "Jordi Yaputra <Jordiyaputra@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint-config-react-app": "^6.0.0",
+    "react-refresh": "^0.9.0"
   }
 }
