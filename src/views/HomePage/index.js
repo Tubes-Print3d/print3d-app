@@ -2,10 +2,10 @@ import { Container, Grid, makeStyles } from "@material-ui/core";
 import * as React from "react";
 import Button from "../../components/Button";
 import berandaImg from "./beranda.png";
+import { Link } from "react-router-dom";
 
 const useStyle = makeStyles((theme) => ({
   root: {
-    // backgroundColor: theme.palette.primary.main,
     background: `url(${berandaImg}), ${theme.palette.primary.main}`,
     backgroundRepeat: "no-repeat",
     backgroundSize: "100%",
@@ -24,10 +24,14 @@ function HomePage() {
       <Container>
         <Grid container className={classes.row1} spacing={2} justify="flex-end">
           <Grid item>
-            <Button variant="contained">Wishlist</Button>
+            <Button variant="contained" component={Link} to="/wishlist">
+              Wishlist
+            </Button>
           </Grid>
           <Grid item>
-            <Button variant="contained">Cari Produk</Button>
+            <Button variant="contained" component={Link} to="/produk">
+              Cari Produk
+            </Button>
           </Grid>
         </Grid>
         <Grid container spacing={4}>

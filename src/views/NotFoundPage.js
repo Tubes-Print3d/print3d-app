@@ -5,8 +5,8 @@ export default function NotFoundPage() {
   return (
     <Container>
       <Box pt={8}>
-      <Typography variant="h1" color="primary">
-        Sorry, this page doesn't exist.
+      <Typography variant="h3" color="primary">
+        Sorry, this page doesn't exist. (404)
       </Typography>
       </Box>
     </Container>
