@@ -2,12 +2,14 @@ import * as React from "react";
 import { ThemeProvider } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import theme from "./theme";
 
 import HomePage from "./views/HomePage";
 import ProfilePage from "./features/profile/ProfilePage";
 import ProductPage from "./features/products/ProductPage";
 import NotFoundPage from "./views/NotFoundPage";
-import theme from "./theme";
+
+import DetailProductPage from "./features/products/DetailProductPage";
 
 function App() {
   return (
@@ -15,18 +17,11 @@ function App() {
       <CssBaseline />
       <Router>
         <Switch>
-          <Route exact path="/">
-            <HomePage />
-          </Route>
-          <Route path="/profil">
-            <ProfilePage />
-          </Route>
-          <Route path="/produk">
-            <ProductPage />
-          </Route>
-          <Route path="*">
-            <NotFoundPage />
-          </Route>
+          <Route component={HomePage} exact path="/" />
+          <Route component={ProfilePage} path="/profil" />
+          <Route component={ProductPage} exact path="/produk" />
+          <Route component={DetailProductPage} exact path="/produk/:id" />
+          <Route component={NotFoundPage} path="*" />
         </Switch>
       </Router>
     </ThemeProvider>

@@ -1,107 +1,38 @@
 import React from "react";
 import HeadTitle from "../../components/HeadTitle";
-import { makeStyles } from "@material-ui/core/styles";
-import {
-  Container,
-  Paper,
-  Grid,
-  Box,
-  TextField,
-} from "@material-ui/core";
+import { Container, Grid, Box } from "@material-ui/core";
 import Tombol from "../../components/Button";
-import kodok from "./KODOK PUASA.png";
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-  },
-
-  img: {
-    margin: "auto",
-    display: "block",
-    width: "100%",
-    height: "18rem",
-  },
-  textField: {
-    background: theme.palette.primary.main,
-  },
-}));
+import Image from "material-ui-image";
+import noImage from "./no-image.jpg";
+import TextFieldKuning from "../../components/TextFieldKuning";
 
 export default function DetailProductPage() {
-  const classes = useStyles();
-
   return (
     <Container>
       <HeadTitle top="DETAIL" bottom="PRODUK" />
       <Grid container spacing={3}>
         <Grid item xs={12} md={5}>
-          <Paper>
-            <Grid container spacing={2}>
-              <Grid item>
-                <img className={classes.img} alt="kodok puasa" src={kodok} />
-              </Grid>
-            </Grid>
-          </Paper>
+          <Image src={noImage} />
         </Grid>
         <Grid item md={7}>
           <Grid container direction="column" spacing={3}>
             <Grid item>
               <Grid container spacing={3}>
                 <Grid item md={6}>
-                  <TextField
-                    className={classes.textField}
-                    fullWidth
-                    margin="dense"
-                    color="primary"
-                    label="Nama Produk"
-                    variant="outlined"
-                  />
+                  <TextFieldKuning label="Nama Produk" />
                 </Grid>
                 <Grid item md={6}>
-                  <TextField
-                    className={classes.textField}
-                    fullWidth
-                    margin="dense"
-                    color="primary"
-                    label="id produk"
-                    variant="outlined"
-                  />
+                  <TextFieldKuning label="Harga" />
                 </Grid>
               </Grid>
             </Grid>
             <Grid item>
-              <TextField
-                className={classes.textField}
-                fullWidth
-                multiline
-                rows={5}
-                margin="dense"
-                color="primary"
-                label="Deskripsi"
-                variant="outlined"
-              />
+              <TextFieldKuning multiline rows={5} label="Deskripsi" />
             </Grid>
             <Grid item>
               <Grid container spacing={3}>
                 <Grid item md={6}>
-                  <TextField
-                    className={classes.textField}
-                    fullWidth
-                    margin="dense"
-                    color="primary"
-                    label="Nama Produk"
-                    variant="outlined"
-                  />
-                </Grid>
-                <Grid item md={6}>
-                  <TextField
-                    className={classes.textField}
-                    fullWidth
-                    margin="dense"
-                    color="primary"
-                    label="id produk"
-                    variant="outlined"
-                  />
+                  <TextFieldKuning label="Pemilik" />
                 </Grid>
               </Grid>
             </Grid>
