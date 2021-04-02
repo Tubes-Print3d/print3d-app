@@ -24,6 +24,7 @@ function Tombol({ children, ...props }) {
       className={classes.tombol}
       variant={props.variant || "contained"}
       color="primary"
+      {...props}
     >
       <Typography>
         <i>
