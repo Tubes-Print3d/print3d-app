@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useEffect } from "react";
 import { ThemeProvider } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -10,8 +11,16 @@ import ProductPage from "./features/products/ProductPage";
 import NotFoundPage from "./views/NotFoundPage";
 
 import DetailProductPage from "./features/products/DetailProductPage";
+import { useDispatch } from "react-redux";
+import { fetchProducts } from "./features/products/productsSlice";
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, [dispatch]);
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
