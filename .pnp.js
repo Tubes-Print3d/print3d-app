@@ -42,6 +42,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@testing-library/jest-dom", "npm:5.11.9"],
             ["@testing-library/react", "virtual:02c9e562898d49e7950aff6b505bf8dd8d8423780641c16ebeb577ac5f3b26eeb2fc5ce211d74d1023c20abffe52fa115049d412ae2e1fea7a63be8396f85c37#npm:11.2.5"],
             ["@testing-library/user-event", "virtual:02c9e562898d49e7950aff6b505bf8dd8d8423780641c16ebeb577ac5f3b26eeb2fc5ce211d74d1023c20abffe52fa115049d412ae2e1fea7a63be8396f85c37#npm:12.8.3"],
+            ["axios", "npm:0.21.1"],
             ["clsx", "npm:1.1.1"],
             ["eslint-config-react-app", "virtual:02c9e562898d49e7950aff6b505bf8dd8d8423780641c16ebeb577ac5f3b26eeb2fc5ce211d74d1023c20abffe52fa115049d412ae2e1fea7a63be8396f85c37#npm:6.0.0"],
             ["material-ui-image", "virtual:02c9e562898d49e7950aff6b505bf8dd8d8423780641c16ebeb577ac5f3b26eeb2fc5ce211d74d1023c20abffe52fa115049d412ae2e1fea7a63be8396f85c37#npm:3.3.1"],
@@ -6924,6 +6925,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["axios", [
+        ["npm:0.21.1", {
+          "packageLocation": "./.yarn/cache/axios-npm-0.21.1-d192f6b3b3-864fb7b5d0.zip/node_modules/axios/",
+          "packageDependencies": [
+            ["axios", "npm:0.21.1"],
+            ["follow-redirects", "virtual:d192f6b3b31cd5d11a443145a3883a70c04cbd7c813c53085dbaf50263735f1162f10fdbddd53c24e162ec3bc37b90966413084323739b7cf942b8bfb4da8831#npm:1.13.3"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["axobject-query", [
         ["npm:2.2.0", {
           "packageLocation": "./.yarn/cache/axobject-query-npm-2.2.0-6553738f52-c963a3ba9f.zip/node_modules/axobject-query/",
@@ -11087,6 +11098,24 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["follow-redirects", "npm:1.10.0"],
             ["debug", "virtual:11708fcd8b5d4d05ff1d66e93d462ef2e0e1a37e2f059f1c5142e31570731629f92bd79531af0543bc9cc3e8328e18d21151650e1e20b8209c0416b889b286e6#npm:3.2.6"]
+          ],
+          "linkType": "HARD",
+        }],
+        ["npm:1.13.3", {
+          "packageLocation": "./.yarn/cache/follow-redirects-npm-1.13.3-bc35dfad3e-9ad74c3b66.zip/node_modules/follow-redirects/",
+          "packageDependencies": [
+            ["follow-redirects", "npm:1.13.3"]
+          ],
+          "linkType": "SOFT",
+        }],
+        ["virtual:d192f6b3b31cd5d11a443145a3883a70c04cbd7c813c53085dbaf50263735f1162f10fdbddd53c24e162ec3bc37b90966413084323739b7cf942b8bfb4da8831#npm:1.13.3", {
+          "packageLocation": "./.yarn/$$virtual/follow-redirects-virtual-355f55dffb/0/cache/follow-redirects-npm-1.13.3-bc35dfad3e-9ad74c3b66.zip/node_modules/follow-redirects/",
+          "packageDependencies": [
+            ["follow-redirects", "virtual:d192f6b3b31cd5d11a443145a3883a70c04cbd7c813c53085dbaf50263735f1162f10fdbddd53c24e162ec3bc37b90966413084323739b7cf942b8bfb4da8831#npm:1.13.3"],
+            ["debug", null]
+          ],
+          "packagePeers": [
+            "debug"
           ],
           "linkType": "HARD",
         }]
@@ -17119,6 +17148,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@testing-library/jest-dom", "npm:5.11.9"],
             ["@testing-library/react", "virtual:02c9e562898d49e7950aff6b505bf8dd8d8423780641c16ebeb577ac5f3b26eeb2fc5ce211d74d1023c20abffe52fa115049d412ae2e1fea7a63be8396f85c37#npm:11.2.5"],
             ["@testing-library/user-event", "virtual:02c9e562898d49e7950aff6b505bf8dd8d8423780641c16ebeb577ac5f3b26eeb2fc5ce211d74d1023c20abffe52fa115049d412ae2e1fea7a63be8396f85c37#npm:12.8.3"],
+            ["axios", "npm:0.21.1"],
             ["clsx", "npm:1.1.1"],
             ["eslint-config-react-app", "virtual:02c9e562898d49e7950aff6b505bf8dd8d8423780641c16ebeb577ac5f3b26eeb2fc5ce211d74d1023c20abffe52fa115049d412ae2e1fea7a63be8396f85c37#npm:6.0.0"],
             ["material-ui-image", "virtual:02c9e562898d49e7950aff6b505bf8dd8d8423780641c16ebeb577ac5f3b26eeb2fc5ce211d74d1023c20abffe52fa115049d412ae2e1fea7a63be8396f85c37#npm:3.3.1"],
