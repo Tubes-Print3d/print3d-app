@@ -24,7 +24,7 @@ const styles = (theme) => ({
   },
 });
 
-const TextFieldKuning = ({ classes, ...props }) => {
+const TextFieldKuning = ({ classes, readOnly, ...props }) => {
   return (
     <TextField
       className={classes.textField}
@@ -33,6 +33,7 @@ const TextFieldKuning = ({ classes, ...props }) => {
           root: classes.input,
           focused: classes.focused,
         },
+        readOnly: readOnly,
       }}
       InputLabelProps={{
         classes: {
@@ -41,7 +42,6 @@ const TextFieldKuning = ({ classes, ...props }) => {
           shrink: classes.labelShrink,
         },
       }}
-      readOnly
       fullWidth
       margin="dense"
       color="primary"
