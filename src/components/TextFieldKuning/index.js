@@ -1,5 +1,6 @@
 import React from "react";
 import { withStyles, TextField } from "@material-ui/core";
+import PropTypes from "prop-types";
 
 const styles = (theme) => ({
   label: {
@@ -25,10 +26,8 @@ const styles = (theme) => ({
 });
 
 /**
- * Deskripsi: Komponen yang berfungsi sebagai wrapper bagi textfield MuiTextField
+ * Komponen yang berfungsi sebagai wrapper bagi textfield MuiTextField
  * dan mengubahnya sesuai dengan style TextField pada DPPL bab 3.6 (Tambah Produk).
- *
- * Input: Menerima props seperti props pada MuiTextField.
  */
 const TextFieldKuning = ({ classes, readOnly, ...props }) => {
   return (
@@ -55,6 +54,19 @@ const TextFieldKuning = ({ classes, readOnly, ...props }) => {
       {...props}
     />
   );
+};
+
+TextFieldKuning.defaultProps = {
+  readOnly: false,
+};
+
+TextFieldKuning.propTypes = {
+  /** Untuk styling dari withstyles.
+   * @ignore
+   */
+  classes: PropTypes.object,
+  /** Komponen berfungsi hanya untuk menampilkan data */
+  readOnly: PropTypes.bool,
 };
 
 export default withStyles(styles)(TextFieldKuning);

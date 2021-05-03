@@ -18,6 +18,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+/**
+ * Deskripsi: Komponen yang berfungsi sebagai wrapper bagi Typography MuiTypography
+ * dan mengubahnya sesuai dengan style Judul pada DPPL bab 3.6
+ *
+ * Input: Menerima props seperti pada MuiTypography
+ *
+ * Output: Mengembalikan Format judul typography yang telah memiliki style yang sesuai
+ */
+
 function HeadTitle({ top, bottom }) {
   const classes = useStyles();
   return (
@@ -36,7 +45,9 @@ function HeadTitle({ top, bottom }) {
 }
 
 HeadTitle.propTypes = {
+  /** Kalimat di baris pertama HeadTitle */
   top: PropTypes.string,
+  /** Kalimat di baris kedua HeadTitle */
   bottom: PropTypes.string,
 };
 
