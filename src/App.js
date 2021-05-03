@@ -13,6 +13,7 @@ import NotFoundPage from "./views/NotFoundPage";
 import DetailProductPage from "./features/products/DetailProductPage";
 import { useDispatch } from "react-redux";
 import { fetchProducts } from "./features/products/productsSlice";
+import CheckoutPage from "./features/orders/CheckoutPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -30,6 +31,7 @@ function App() {
           <Route component={ProfilePage} path="/profil" />
           <Route component={ProductPage} exact path="/produk" />
           <Route component={DetailProductPage} exact path="/produk/:id" />
+          <Route component={CheckoutPage} exact path="/checkout" />
           <Route component={NotFoundPage} path="*" />
         </Switch>
       </Router>
