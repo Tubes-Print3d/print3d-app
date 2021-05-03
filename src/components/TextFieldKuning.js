@@ -1,12 +1,3 @@
-/**
- * Deskripsi: Komponen yang berfungsi sebagai wrapper bagi textfield MuiTextField
- * dan mengubahnya sesuai dengan style TextField pada DPPL bab 3.6 (Tambah Produk).
- *
- * Input: Menerima props seperti props pada MuiTextField.
- * Output: Mengembalikan TextField yang telah memiliki style yang
- * sesuai.
- */
-
 import React from "react";
 import { withStyles, TextField } from "@material-ui/core";
 
@@ -33,6 +24,12 @@ const styles = (theme) => ({
   },
 });
 
+/**
+ * Deskripsi: Komponen yang berfungsi sebagai wrapper bagi textfield MuiTextField
+ * dan mengubahnya sesuai dengan style TextField pada DPPL bab 3.6 (Tambah Produk).
+ *
+ * Input: Menerima props seperti props pada MuiTextField.
+ */
 const TextFieldKuning = ({ classes, readOnly, ...props }) => {
   return (
     <TextField
