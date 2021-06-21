@@ -7,10 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.4.0] - 2021-06-21
+
+> [backend]: 0.3.0
+
+### Added
+
+- Login and Register
+- List products
+
 ## [0.2.0] - 2021-03-15
 
 ### Added
 
-* Homepage
-* Yarn berry
-* React base
+- Homepage
+- Yarn berry
+- React base

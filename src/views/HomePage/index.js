@@ -1,11 +1,16 @@
 import { Container, Grid, makeStyles } from "@material-ui/core";
 import * as React from "react";
-import Button from "../../components/Button";
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+
 import berandaImg from "./beranda.png";
+import LoginDialog from "../../features/profile/LoginDialog";
+import Button from "../../components/Button";
+import { selectToken } from "../../features/profile/profileSlice";
 
 const useStyle = makeStyles((theme) => ({
   root: {
-    // backgroundColor: theme.palette.primary.main,
     background: `url(${berandaImg}), ${theme.palette.primary.main}`,
     backgroundRepeat: "no-repeat",
     backgroundSize: "100%",
@@ -19,25 +24,58 @@ const useStyle = makeStyles((theme) => ({
 
 function HomePage() {
   const classes = useStyle();
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const [dialogMode, setDialogMode] = useState("login");
+  const profileToken = useSelector(selectToken);
+
   return (
     <div className={classes.root}>
       <Container>
         <Grid container className={classes.row1} spacing={2} justify="flex-end">
           <Grid item>
-            <Button variant="contained">Wishlist</Button>
+            <Button variant="contained" component={Link} to="/wishlist">
+              Wishlist
+            </Button>
           </Grid>
           <Grid item>
-            <Button variant="contained">Cari Produk</Button>
+            <Button variant="contained" component={Link} to="/produk">
+              Cari Produk
+            </Button>
           </Grid>
         </Grid>
-        <Grid container spacing={4}>
-          <Grid item>
-            <Button variant="lined">DAFTAR</Button>
+        {profileToken !== null && (
+          <Grid container spacing={4}>
+            <Grid item>
+              <Button
+                variant="lined"
+                onClick={(e) => {
+                  setDialogMode("register");
+                  setDialogOpen(true);
+                }}
+              >
+                DAFTAR
+              </Button>
+            </Grid>
+            <Grid item>
+              <Button
+                variant="lined"
+                onClick={(e) => {
+                  setDialogMode("login");
+                  setDialogOpen(true);
+                }}
+              >
+                LOGIN
+              </Button>
+            </Grid>
           </Grid>
-          <Grid item>
-            <Button variant="lined">LOGIN</Button>
-          </Grid>
-        </Grid>
+        )}
+        <LoginDialog
+          open={dialogOpen}
+          onClose={(e) => {
+            setDialogOpen(false);
+          }}
+          registerMode={dialogMode === "register"}
+        />
       </Container>
     </div>
   );
