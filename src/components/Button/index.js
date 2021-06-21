@@ -18,9 +18,9 @@ const useStyles = makeStyles((theme) => ({
  *
  * Output: Mengembalikan Checkbox yang telah memiliki style yang sesuai
  */
-function Tombol({ children, ...props }) {
+function Tombol({ children, variant, ...props }) {
   const classes = useStyles();
-  if (props.variant === "lined") {
+  if (variant === "lined") {
     return (
       <Button className={classes.tombolGaris} {...props}>
         <i>{children}</i>
@@ -31,7 +31,7 @@ function Tombol({ children, ...props }) {
   return (
     <Button
       className={classes.tombol}
-      variant={props.variant || "contained"}
+      variant={variant || "contained"}
       {...props}
     >
       <Typography>
