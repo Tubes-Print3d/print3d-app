@@ -95,12 +95,16 @@ function LoginDialog({ open, onClose, registerMode, ...props }) {
       },
       validationSchema: Yup.object({ ...yup }),
       onSubmit: async (values) => {
-        const response = await api.post("/v1/users/login", values);
-        enqueueSnackbar(
-          `Selamat datang kembali, ${response.data.payload.nama}`,
-          { variant: "success" }
-        );
-        history.push("/produk");
+        try {
+          const response = await api.post("/v1/users/login", values);
+          enqueueSnackbar(
+            `Selamat datang kembali, ${response.data.payload.nama}`,
+            { variant: "success" }
+          );
+          history.push("/produk");
+        } catch (error) {
+          enqueueSnackbar(error.response.data.error.msg, { variant: "error" });
+        }
       },
     },
   };
