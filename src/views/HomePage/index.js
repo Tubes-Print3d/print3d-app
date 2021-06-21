@@ -2,9 +2,12 @@ import { Container, Grid, makeStyles } from "@material-ui/core";
 import * as React from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+
 import berandaImg from "./beranda.png";
 import LoginDialog from "../../features/profile/LoginDialog";
 import Button from "../../components/Button";
+import { selectToken } from "../../features/profile/profileSlice";
 
 const useStyle = makeStyles((theme) => ({
   root: {
@@ -23,6 +26,8 @@ function HomePage() {
   const classes = useStyle();
   const [dialogOpen, setDialogOpen] = useState(false);
   const [dialogMode, setDialogMode] = useState("login");
+  const profileToken = useSelector(selectToken);
+
   return (
     <div className={classes.root}>
       <Container>
@@ -38,30 +43,32 @@ function HomePage() {
             </Button>
           </Grid>
         </Grid>
-        <Grid container spacing={4}>
-          <Grid item>
-            <Button
-              variant="lined"
-              onClick={(e) => {
-                setDialogMode("register");
-                setDialogOpen(true);
-              }}
-            >
-              DAFTAR
-            </Button>
+        {profileToken !== null && (
+          <Grid container spacing={4}>
+            <Grid item>
+              <Button
+                variant="lined"
+                onClick={(e) => {
+                  setDialogMode("register");
+                  setDialogOpen(true);
+                }}
+              >
+                DAFTAR
+              </Button>
+            </Grid>
+            <Grid item>
+              <Button
+                variant="lined"
+                onClick={(e) => {
+                  setDialogMode("login");
+                  setDialogOpen(true);
+                }}
+              >
+                LOGIN
+              </Button>
+            </Grid>
           </Grid>
-          <Grid item>
-            <Button
-              variant="lined"
-              onClick={(e) => {
-                setDialogMode("login");
-                setDialogOpen(true);
-              }}
-            >
-              LOGIN
-            </Button>
-          </Grid>
-        </Grid>
+        )}
         <LoginDialog
           open={dialogOpen}
           onClose={(e) => {

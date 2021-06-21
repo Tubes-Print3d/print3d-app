@@ -6,6 +6,7 @@ import { Dialog, Grid, Typography } from "@material-ui/core";
 import * as Yup from "yup";
 import { useHistory } from "react-router-dom";
 import { useSnackbar } from "notistack";
+import { useDispatch } from "react-redux";
 
 import useStyles from "./styles";
 import MainForm from "./MainForm";
@@ -13,12 +14,14 @@ import PencetakForm from "./PencetakForm";
 
 import Tombol from "../../../components/Button";
 import api from "../../../utils/api";
+import { setProfile } from "../profileSlice";
 
 function LoginDialog({ open, onClose, registerMode, ...props }) {
   const classes = useStyles();
   const [formStep, setFormStep] = useState(0);
   const history = useHistory();
   const { enqueueSnackbar } = useSnackbar();
+  const dispatch = useDispatch();
 
   const initialValues = {
     nama: "John Doedoe",
@@ -77,6 +80,7 @@ function LoginDialog({ open, onClose, registerMode, ...props }) {
         }
         try {
           const response = await api.post("/v1/users/register", packed);
+          dispatch(setProfile(response.data.payload));
           enqueueSnackbar(`Selamat datang, ${response.data.payload.nama}`, {
             variant: "success",
           });
@@ -97,6 +101,7 @@ function LoginDialog({ open, onClose, registerMode, ...props }) {
       onSubmit: async (values) => {
         try {
           const response = await api.post("/v1/users/login", values);
+          dispatch(setProfile(response.data.payload));
           enqueueSnackbar(
             `Selamat datang kembali, ${response.data.payload.nama}`,
             { variant: "success" }
