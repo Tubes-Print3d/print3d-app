@@ -2,7 +2,11 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Container, Grid, IconButton, makeStyles } from "@material-ui/core";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
+import { useDispatch, useSelector } from "react-redux";
+
 import Tombol from "../Button";
+import { selectToken, logout } from "../../features/profile/profileSlice";
+import { useSnackbar } from "notistack";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -14,8 +18,16 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Navbar({ onClickKeluar, ...props }) {
+function Navbar({ ...props }) {
   const classes = useStyles();
+
+  const dispatch = useDispatch();
+  const loggedIn = useSelector(selectToken);
+
+  const { enqueueSnackbar } = useSnackbar();
+
+  if (!loggedIn) return null;
+
   return (
     <div className={classes.root}>
       <Container>
@@ -26,7 +38,13 @@ function Navbar({ onClickKeluar, ...props }) {
             </IconButton>
           </Grid>
           <Grid item>
-            <Tombol variant="contained" onClick={onClickKeluar}>
+            <Tombol
+              variant="contained"
+              onClick={() => {
+                dispatch(logout());
+                enqueueSnackbar("Sampai jumpa 👋", { variant: "info" });
+              }}
+            >
               KELUAR
             </Tombol>
           </Grid>
@@ -36,11 +54,7 @@ function Navbar({ onClickKeluar, ...props }) {
   );
 }
 
-Navbar.default = {
-  onClickKeluar: () => {},
-};
-Navbar.propTypes = {
-  onClickKeluar: PropTypes.func,
-};
+Navbar.default = {};
+Navbar.propTypes = {};
 
 export default Navbar;

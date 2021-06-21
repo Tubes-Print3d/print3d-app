@@ -10,6 +10,7 @@ import { selectProductById, selectProductsStatus } from "./productsSlice";
 import { useParams } from "react-router-dom";
 import NotFoundPage from "../../views/NotFoundPage";
 import WithLoading from "../../components/WithLoading";
+import Navbar from "../../components/Navbar";
 
 export default function DetailProductPage() {
   const { id } = useParams();
@@ -20,6 +21,7 @@ export default function DetailProductPage() {
 
   return (
     <Container>
+      <Navbar />
       <HeadTitle top="DETAIL" bottom="PRODUK" />
       <WithLoading loading={status === "loading"}>
         {product && (

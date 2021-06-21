@@ -4,9 +4,8 @@ import api from "../../utils/api";
 export const profileSlice = createSlice({
   name: "profile",
   initialState: {
-    profile: {
-      token: null,
-    },
+    token: null,
+    data: null,
     status: "idle", // idle, loading, success, error
     error: null,
   },
@@ -15,14 +14,21 @@ export const profileSlice = createSlice({
       state.status = action.payload;
     },
     setProfile: (state, action) => {
-      state.profile = action.payload;
+      const { token, ...data } = action.payload;
+      state.token = token;
+      state.data = data;
       state.status = "success";
+    },
+    logout: (state) => {
+      state.data = null;
+      state.token = null;
+      state.status = "idle";
     },
   },
   extraReducers: {},
 });
 
-export const { setProfile } = profileSlice.actions;
+export const { setProfile, logout } = profileSlice.actions;
 
 export const selectToken = (state) => state.profile.token;
 

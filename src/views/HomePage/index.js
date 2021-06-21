@@ -43,7 +43,7 @@ function HomePage() {
             </Button>
           </Grid>
         </Grid>
-        {profileToken !== null && (
+        {!profileToken && (
           <Grid container spacing={4}>
             <Grid item>
               <Button
