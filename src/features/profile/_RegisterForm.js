@@ -1,86 +1,18 @@
 import React from "react";
 import { useState } from "react";
 import PropTypes from "prop-types";
-
+// import { TextField } from "formik-material-ui";
 import {
   Dialog,
   Grid,
   Typography,
-  makeStyles,
-  TextField,
   Checkbox,
   FormControlLabel,
+  TextField,
   MenuItem,
 } from "@material-ui/core";
 import Tombol from "../../components/Button";
-
-const useStyles = makeStyles((theme) => ({
-  root: { padding: theme.spacing(5) },
-  formBody: {},
-  title: {
-    fontWeight: "bold",
-    fontSize: 56,
-    fontStyle: "italic",
-    textAlign: "center",
-  },
-  paper: {
-    background: "white",
-    color: "black",
-    padding: theme.spacing(5),
-  },
-  textFieldCustom: {
-    "& .MuiInputBase-root": {
-      color: theme.palette.primary.main,
-    },
-    "& .MuiInput-underline": {
-      "&:before, &:hover::before": {
-        borderBottomColor: theme.palette.primary.main,
-      },
-      "& .MuiSelect-icon:not(.Mui-disabled)": {
-        color: theme.palette.primary.main,
-      },
-    },
-    "& .MuiFormLabel-root": {
-      color: theme.palette.primary.main,
-    },
-    "& .MuiOutlinedInput-root": {
-      color: theme.palette.primary.main,
-      // border: `1px solid ${theme.palette.primary.main}`,
-      "& fieldset": {
-        borderColor: theme.palette.primary.main,
-      },
-      "&:hover fieldset": {
-        borderColor: theme.palette.primary.main,
-      },
-    },
-    "& .MuiFormHelperText-root": { color: theme.palette.primary.main },
-  },
-  subheader: {
-    fontSize: 24,
-    fontWeight: 600,
-    fontStyle: "italic",
-  },
-  bottomContainer: {
-    padding: theme.spacing(1),
-  },
-  checkboxCustom: {
-    color: theme.palette.primary.main,
-    border: `2px solid ${theme.palette.primary.main}`,
-    borderRadius: 9,
-    width: "100%",
-    margin: 0,
-    "& .MuiCheckbox-root": {
-      color: theme.palette.primary.main,
-    },
-  },
-  checkboxWrapper: {
-    padding: theme.spacing(0, 2),
-  },
-  alamatWrapper: {
-    padding: theme.spacing(2),
-    marginTop: theme.spacing(-4),
-  },
-}));
+import useStyles from "./LoginDialog/styles";
 
 function CheckboxCustom({ name, ...props }) {
   const classes = useStyles();
@@ -252,7 +184,7 @@ function RegisterForm({ open, onClose, ...props }) {
                 variant="outlined"
                 onClick={(e) => setFormGroup((x) => x - 1)}
               >
-                {"Kembali"}
+                Kembali
               </Tombol>
             </Grid>
           )}

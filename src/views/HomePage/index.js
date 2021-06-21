@@ -1,8 +1,9 @@
 import { Container, Grid, makeStyles } from "@material-ui/core";
 import * as React from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import berandaImg from "./beranda.png";
-import RegisterForm from "../../features/profile/RegisterForm";
+import LoginDialog from "../../features/profile/LoginDialog";
 import Button from "../../components/Button";
 
 const useStyle = makeStyles((theme) => ({
@@ -20,7 +21,8 @@ const useStyle = makeStyles((theme) => ({
 
 function HomePage() {
   const classes = useStyle();
-  const [loginDialog, setLoginDialog] = React.useState(false);
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const [dialogMode, setDialogMode] = useState("login");
   return (
     <div className={classes.root}>
       <Container>
@@ -38,19 +40,34 @@ function HomePage() {
         </Grid>
         <Grid container spacing={4}>
           <Grid item>
-            <Button variant="lined" onClick={(e) => setLoginDialog(true)}>
+            <Button
+              variant="lined"
+              onClick={(e) => {
+                setDialogMode("register");
+                setDialogOpen(true);
+              }}
+            >
               DAFTAR
             </Button>
           </Grid>
           <Grid item>
-            <Button variant="lined">LOGIN</Button>
+            <Button
+              variant="lined"
+              onClick={(e) => {
+                setDialogMode("login");
+                setDialogOpen(true);
+              }}
+            >
+              LOGIN
+            </Button>
           </Grid>
         </Grid>
-        <RegisterForm
-          open={loginDialog}
+        <LoginDialog
+          open={dialogOpen}
           onClose={(e) => {
-            setLoginDialog(false);
+            setDialogOpen(false);
           }}
+          registerMode={dialogMode === "register"}
         />
       </Container>
     </div>
