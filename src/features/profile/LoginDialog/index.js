@@ -5,6 +5,8 @@ import { Formik, Form } from "formik";
 import { Dialog, Grid, Typography } from "@material-ui/core";
 import * as Yup from "yup";
 import { useHistory } from "react-router-dom";
+import { useSnackbar } from "notistack";
+
 import useStyles from "./styles";
 import MainForm from "./MainForm";
 import PencetakForm from "./PencetakForm";
@@ -16,6 +18,7 @@ function LoginDialog({ open, onClose, registerMode, ...props }) {
   const classes = useStyles();
   const [formStep, setFormStep] = useState(0);
   const history = useHistory();
+  const { enqueueSnackbar } = useSnackbar();
 
   const initialValues = {
     nama: "John Doedoe",
@@ -72,8 +75,17 @@ function LoginDialog({ open, onClose, registerMode, ...props }) {
           delete packed.listMaterial;
           delete packed.alamat;
         }
-        const response = await api.post("/v1/users/register", packed);
-        history.push("/produk");
+        try {
+          const response = await api.post("/v1/users/register", packed);
+          enqueueSnackbar(`Selamat datang, ${response.data.payload.nama}`, {
+            variant: "success",
+          });
+          history.push("/produk");
+        } catch (error) {
+          for (const err of error.response.data.error) {
+            enqueueSnackbar(err.msg, { variant: "error" });
+          }
+        }
       },
     },
     login: {
@@ -81,9 +93,13 @@ function LoginDialog({ open, onClose, registerMode, ...props }) {
         email: initialValues.email,
         password: initialValues.password,
       },
-      validationSchema: Yup.object(yup),
+      validationSchema: Yup.object({ ...yup }),
       onSubmit: async (values) => {
         const response = await api.post("/v1/users/login", values);
+        enqueueSnackbar(
+          `Selamat datang kembali, ${response.data.payload.nama}`,
+          { variant: "success" }
+        );
         history.push("/produk");
       },
     },

@@ -1,9 +1,6 @@
 import * as React from "react";
 import { useEffect } from "react";
-import { ThemeProvider } from "@material-ui/core/styles";
-import CssBaseline from "@material-ui/core/CssBaseline";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import theme from "./theme";
 
 import HomePage from "./views/HomePage";
 import ProfilePage from "./features/profile/ProfilePage";
@@ -23,19 +20,16 @@ function App() {
   }, [dispatch]);
 
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <Router>
-        <Switch>
-          <Route component={HomePage} exact path="/" />
-          <Route component={ProfilePage} path="/profil" />
-          <Route component={ProductPage} exact path="/produk" />
-          <Route component={DetailProductPage} exact path="/produk/:id" />
-          <Route component={CheckoutPage} exact path="/checkout" />
-          <Route component={NotFoundPage} path="*" />
-        </Switch>
-      </Router>
-    </ThemeProvider>
+    <Router>
+      <Switch>
+        <Route component={HomePage} exact path="/" />
+        <Route component={ProfilePage} path="/profil" />
+        <Route component={ProductPage} exact path="/produk" />
+        <Route component={DetailProductPage} exact path="/produk/:id" />
+        <Route component={CheckoutPage} exact path="/checkout" />
+        <Route component={NotFoundPage} path="*" />
+      </Switch>
+    </Router>
   );
 }
 
