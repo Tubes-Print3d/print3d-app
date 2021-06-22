@@ -21,6 +21,7 @@ function MainForm({ registerMode, ...props }) {
             label="Nama lengkap"
             variant="standard"
             fullWidth
+            autoFocus
           />
         </Grid>
       )}

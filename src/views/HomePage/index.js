@@ -21,9 +21,9 @@ const useStyle = makeStyles((theme) => ({
   },
 }));
 
-function HomePage() {
+function HomePage({ location }) {
   const classes = useStyle();
-  const [dialogOpen, setDialogOpen] = useState(false);
+  const [dialogOpen, setDialogOpen] = useState(location.state?.login);
   const [dialogMode, setDialogMode] = useState("login");
   const isLoggedIn = useLoggedIn();
 

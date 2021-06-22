@@ -6,7 +6,7 @@ import { baseUrl } from "../../utils/api";
 export const profileApi = createApi({
   reducerPath: "profileApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: `${baseUrl}v1/users`,
+    baseUrl: `${baseUrl}/v1/users`,
     prepareHeaders: (headers, { getState }) => {
       const token = getState().profile.token;
       if (token) {

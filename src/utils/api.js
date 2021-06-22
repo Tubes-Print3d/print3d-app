@@ -7,6 +7,6 @@ export default axios.create({
   baseURL: `${PROXY}/api`,
 });
 
-export const baseUrl = `${PROXY}/api/`;
+export const baseUrl = `${PROXY}/api`;
 export const baseQuery = fetchBaseQuery({ baseUrl });
-export const baseQueryV1 = fetchBaseQuery({ baseUrl: `${baseUrl}v1/` });
+export const baseQueryV1 = fetchBaseQuery({ baseUrl: `${baseUrl}/v1` });
