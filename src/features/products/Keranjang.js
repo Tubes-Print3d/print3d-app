@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function CheckboxListSecondary() {
+export default function Keranjang() {
   const classes = useStyles();
   const [checked, setChecked] = React.useState([1]);
 

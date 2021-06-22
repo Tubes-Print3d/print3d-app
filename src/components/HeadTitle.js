@@ -1,3 +1,5 @@
+
+
 import * as React from "react";
 import { makeStyles, Typography } from "@material-ui/core";
 import clsx from "clsx";
@@ -17,6 +19,14 @@ const useStyles = makeStyles((theme) => ({
     "stroke-width": theme.spacing(0.6),
   },
 }));
+
+/**
+ * Deskripsi: Komponen yang berfungsi sebagai wrapper bagi Typography MuiTypography 
+ * dan mengubahnya sesuai dengan style Judul pada DPPL bab 3.6
+ * 
+ * Input: Menerima props seperti pada MuiTypography
+ * Output: Mengembalikan Format judul typography yang telah memiliki style yang sesuai
+ */
 
 function HeadTitle({ top, bottom }) {
   const classes = useStyles();

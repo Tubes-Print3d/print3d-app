@@ -8,7 +8,6 @@ import {
   Box,
   MenuItem,
   Input,
-  InputLabel,
 } from "@material-ui/core";
 import Image from "material-ui-image";
 import Tombol from "../../components/Button";
@@ -63,7 +62,9 @@ export default function DesainerPage() {
 
   return (
     <Container>
+      <HeadTitle top="DAFTAR" bottom="DESAINER" />
       <Grid container justify="center">
+        
         <Box mt={9}>
           <Paper className={classes.Paper}>
             <Grid
@@ -73,7 +74,6 @@ export default function DesainerPage() {
               alignItems="center"
               spacing={2}
             >
-              <HeadTitle top="DAFTAR" bottom="DESAINER" />
               <Grid container spacing={3}>
                 <Grid item xs={12} md={5}>
                   <Image src={noImage} />

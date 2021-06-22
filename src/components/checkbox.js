@@ -1,11 +1,3 @@
-/**
- * Deskripsi: Komponen yang berfungsi sebagai wrapper bagi TextField MuiTextField 
- * dan mengubahnya sesuai dengan style TextField pada DPPL bab 3.6
- * 
- * Input: Menerima props seperti pada MuiTextField
- * Output: Mengembalikan TextField yang telah memiliki style yang sesuai
- */
-
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import { orange } from '@material-ui/core/colors';
@@ -22,14 +14,22 @@ const GreenCheckbox = withStyles({
   },
   checked: {},
 })((props) => <Checkbox color="default" {...props} />);
-
+/**
+ * Deskripsi: Komponen yang berfungsi sebagai checkbox MuiCheckbox 
+ * dan mengubahnya sesuai dengan style Checkbox pada DPPL bab 3.6
+ * 
+ * Input: Menerima props seperti pada MuiCheckbox
+ * Output: Mengembalikan Checkbox yang telah memiliki style yang sesuai
+ */
 export default function CheckboxLabels() {
   const [state, setState] = React.useState(true
   );
 
+
   const handleChange = (event) => {
     setState({ ...state, [event.target.name]: event.target.checked });
   };
+
 
   return (
     <FormGroup row>
@@ -38,4 +38,6 @@ export default function CheckboxLabels() {
       />
     </FormGroup>
   );
+
+  
 }

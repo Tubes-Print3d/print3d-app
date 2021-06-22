@@ -1,5 +1,6 @@
 import * as React from "react";
 import { Button, makeStyles, Typography } from "@material-ui/core";
+import PropTypes from 'prop-types';
 
 const useStyles = makeStyles((theme) => ({
   tombolGaris: {
@@ -9,7 +10,13 @@ const useStyles = makeStyles((theme) => ({
     padding: `2px ${theme.spacing(2)}px`,
   },
 }));
-
+ /**
+ * Deskripsi: Komponen yang berfungsi sebagai checkbox MuiCheckbox 
+ * dan mengubahnya sesuai dengan style Checkbox pada DPPL bab 3.6
+ * 
+ * Input: Menerima props seperti pada MuiCheckbox
+ * Output: Mengembalikan Checkbox yang telah memiliki style yang sesuai
+ */
 function Tombol({ children, ...props }) {
   const classes = useStyles();
   if (props.variant === "lined") {
@@ -19,6 +26,7 @@ function Tombol({ children, ...props }) {
       </Button>
     );
   }
+ 
   return (
     <Button
       className={classes.tombol}
@@ -34,5 +42,12 @@ function Tombol({ children, ...props }) {
     </Button>
   );
 }
+
+Tombol.defaultProps = {
+  
+};
+Tombol.propTypes = {
+  children: PropTypes.node,
+};
 
 export default Tombol;

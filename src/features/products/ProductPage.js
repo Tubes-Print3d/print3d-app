@@ -23,7 +23,7 @@ function ProductPage() {
   return (
     <Container>
       <HeadTitle top="DAFTAR" bottom="PRODUK" />
-      <WithLoading loading={status === "loading"}>
+      
         <Grid container spacing={2}>
           {products && products.length ? (
             products.map((produk, i) => (
@@ -39,7 +39,7 @@ function ProductPage() {
             </Grid>
           )}
         </Grid>
-      </WithLoading>
+      
     </Container>
   );
 }
