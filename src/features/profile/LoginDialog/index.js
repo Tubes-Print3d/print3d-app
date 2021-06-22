@@ -13,29 +13,33 @@ import MainForm from "./MainForm";
 import PencetakForm from "./PencetakForm";
 
 import Tombol from "../../../components/Button";
-import api from "../../../utils/api";
-import { setProfile } from "../profileSlice";
+import { useLoginMutation, useRegisterMutation } from "../profile.api";
+import { setCredentials } from "../profile.slice";
 
 function LoginDialog({ open, onClose, registerMode, ...props }) {
   const classes = useStyles();
+
   const [formStep, setFormStep] = useState(0);
   const history = useHistory();
   const { enqueueSnackbar } = useSnackbar();
+
+  const [login] = useLoginMutation();
+  const [register] = useRegisterMutation();
   const dispatch = useDispatch();
 
   const initialValues = {
-    nama: "John Doedoe",
-    email: "joni1@gmail.com",
-    password: "`WCV&q48/PY54Lte",
-    rePassword: "`WCV&q48/PY54Lte",
-    roles: ["desainer"],
-    listMaterial: ["Resin", "Polyester"],
+    nama: "",
+    email: "",
+    password: "",
+    rePassword: "",
+    roles: [],
+    listMaterial: [],
     alamat: {
       provinsi: "",
       kabupaten: "",
       kecamatan: "",
-      kodepos: "40256",
-      alamat: "Universitas Telkom, Jl. Telekomunikasi No.1",
+      kodepos: "",
+      alamat: "",
       koordinat: {
         coordinates: [502, 300],
       },
@@ -79,14 +83,14 @@ function LoginDialog({ open, onClose, registerMode, ...props }) {
           delete packed.alamat;
         }
         try {
-          const response = await api.post("/v1/users/register", packed);
-          dispatch(setProfile(response.data.payload));
-          enqueueSnackbar(`Selamat datang, ${response.data.payload.nama}`, {
+          const payload = await register(packed).unwrap();
+          dispatch(setCredentials(payload));
+          enqueueSnackbar(`Selamat datang, ${payload.nama}`, {
             variant: "success",
           });
-          history.push("/produk");
+          history.push(history.location.state?.from?.pathname || "/produk");
         } catch (error) {
-          for (const err of error.response.data.error) {
+          for (const err of error.data.error) {
             enqueueSnackbar(err.msg, { variant: "error" });
           }
         }
@@ -100,15 +104,14 @@ function LoginDialog({ open, onClose, registerMode, ...props }) {
       validationSchema: Yup.object({ ...yup }),
       onSubmit: async (values) => {
         try {
-          const response = await api.post("/v1/users/login", values);
-          dispatch(setProfile(response.data.payload));
-          enqueueSnackbar(
-            `Selamat datang kembali, ${response.data.payload.nama}`,
-            { variant: "success" }
-          );
-          history.push("/produk");
+          const payload = await login(values).unwrap();
+          dispatch(setCredentials(payload));
+          enqueueSnackbar(`Selamat datang kembali, ${payload.nama}`, {
+            variant: "success",
+          });
+          history.push(history.location.state?.from?.pathname || "/produk");
         } catch (error) {
-          enqueueSnackbar(error.response.data.error.msg, { variant: "error" });
+          enqueueSnackbar(error.data.error.msg, { variant: "error" });
         }
       },
     },

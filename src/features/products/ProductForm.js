@@ -1,65 +1,105 @@
 import React from "react";
-import { Grid, Container } from "@material-ui/core";
+import PropTypes from "prop-types";
+import { Grid } from "@material-ui/core";
 import Image from "material-ui-image";
-import TextFieldKuning from "../../components/TextFieldKuning";
+import { Formik, Field, Form } from "formik";
+
 import noImage from "./no-image.jpg";
-import HeadTitle from "../../components/HeadTitle";
+import TextFieldKuning from "../../components/TextFieldKuning";
+import Tombol from "../../components/Button";
 
-function ProductForm({ title, ...props }) {
-  const readOnly = false;
-
+function ProductForm({ actionComponent, formikSetup, ...props }) {
   return (
-    <Container>
-      <HeadTitle top={title.toUpperCase()} bottom="PRODUK" />
-      <Grid container spacing={3}>
-        <Grid item xs={12} md={5}>
-          <Image src={noImage} />
-        </Grid>
-        <Grid item md={7}>
-          <Grid container direction="column" spacing={3}>
-            <Grid item>
-              <Grid container spacing={3}>
-                <Grid item md={6}>
-                  <TextFieldKuning
-                    label="Nama Produk"
-                    value={props.product?.nama}
-                    readOnly={readOnly}
-                  />
+    <Formik {...formikSetup}>
+      {(formik) => (
+        <Grid container spacing={3}>
+          <Grid item xs={12} md={5}>
+            <Image src={noImage} />
+          </Grid>
+          <Grid item md={7}>
+            <Form style={{ height: "100%" }}>
+              <Grid
+                container
+                direction="column"
+                justify="space-between"
+                style={{ height: "100%" }}
+              >
+                <Grid item>
+                  <Grid container direction="column" spacing={3}>
+                    <Grid item>
+                      <Grid container spacing={3}>
+                        <Grid item md={6}>
+                          <Field
+                            component={TextFieldKuning}
+                            name="nama"
+                            label="Nama Produk"
+                            readOnly={props.readOnly}
+                          />
+                        </Grid>
+                        <Grid item md={6}>
+                          <Field
+                            component={TextFieldKuning}
+                            label="Royalti"
+                            name="royalty"
+                            readOnly={props.readOnly}
+                          />
+                        </Grid>
+                      </Grid>
+                    </Grid>
+                    <Grid item>
+                      <Field
+                        component={TextFieldKuning}
+                        multiline
+                        rows={5}
+                        label="Deskripsi"
+                        name="deskripsi"
+                        readOnly={props.readOnly}
+                      />
+                    </Grid>
+                    <Grid item>
+                      <Grid container spacing={3}>
+                        <Grid item md={6}>
+                          <Field
+                            component={TextFieldKuning}
+                            label="Pemilik"
+                            name="pemilik"
+                            readOnly={true}
+                            disabled
+                          />
+                        </Grid>
+                      </Grid>
+                    </Grid>
+                  </Grid>
                 </Grid>
-                <Grid item md={6}>
-                  <TextFieldKuning
-                    label="Royalti"
-                    value={props.product?.royalty}
-                    readOnly={readOnly}
-                  />
-                </Grid>
+                {actionComponent ? (
+                  actionComponent
+                ) : (
+                  <Grid
+                    container
+                    justify="flex-end"
+                    style={{ paddingRight: 16 }}
+                  >
+                    <Tombol type="submit" variant="outlined">
+                      SUBMIT
+                    </Tombol>
+                  </Grid>
+                )}
               </Grid>
-            </Grid>
-            <Grid item>
-              <TextFieldKuning
-                multiline
-                rows={5}
-                label="Deskripsi"
-                value={props.product ? "Lorem Ipsum dolor sit amet." : null}
-                readOnly={readOnly}
-              />
-            </Grid>
-            <Grid item>
-              <Grid container spacing={3}>
-                <Grid item md={6}>
-                  <TextFieldKuning
-                    label="Pemilik"
-                    value={props.product?.pemilik.nama}
-                    readOnly={readOnly}
-                  />
-                </Grid>
-              </Grid>
-            </Grid>
+            </Form>
           </Grid>
         </Grid>
-      </Grid>
-    </Container>
+      )}
+    </Formik>
   );
 }
+
+ProductForm.defaultProps = {
+  formikSetup: {},
+  readOnly: false,
+};
+
+ProductForm.propTypes = {
+  readOnly: PropTypes.bool,
+};
 
 export default ProductForm;

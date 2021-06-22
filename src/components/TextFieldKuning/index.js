@@ -1,6 +1,7 @@
 import React from "react";
 import { withStyles, TextField } from "@material-ui/core";
 import PropTypes from "prop-types";
+import { fieldToTextField } from "formik-material-ui";
 
 const styles = (theme) => ({
   label: {
@@ -23,6 +24,16 @@ const styles = (theme) => ({
     background: "none",
     color: theme.palette.primary.light,
   },
+  textField: {
+    "& .Mui-disabled": {
+      "&.MuiInputBase-root": {
+        color: "rgba(0,0,0,0.5)",
+      },
+      "&.MuiFormLabel-root": {
+        color: "rgba(255, 187, 0, .8)",
+      },
+    },
+  },
 });
 
 /**
@@ -30,9 +41,19 @@ const styles = (theme) => ({
  * dan mengubahnya sesuai dengan style TextField pada DPPL bab 3.6 (Tambah Produk).
  */
 const TextFieldKuning = ({ classes, readOnly, ...props }) => {
+  const { form, field } = props;
+  const onChange = React.useCallback(
+    (event) => {
+      form.setFieldValue(field.name, event.target ? event.target : "");
+    },
+    [form, field]
+  );
+
   return (
     <TextField
       className={classes.textField}
+      onChange={onChange}
+      {...fieldToTextField(props)}
       InputProps={{
         classes: {
           root: classes.input,
@@ -51,7 +72,6 @@ const TextFieldKuning = ({ classes, readOnly, ...props }) => {
       margin="dense"
       color="primary"
       variant="outlined"
-      {...props}
     />
   );
 };

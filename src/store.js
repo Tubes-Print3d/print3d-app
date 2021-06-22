@@ -1,10 +1,15 @@
 import { configureStore } from "@reduxjs/toolkit";
-import productsReducer from "./features/products/productsSlice";
-import profileReducer from "./features/profile/profileSlice";
+import { api as productsApi } from "./features/products/products.api";
+import profileReducer from "./features/profile/profile.slice";
+import { profileApi } from "./features/profile/profile.api";
 
 export default configureStore({
   reducer: {
-    products: productsReducer,
+    [productsApi.reducerPath]: productsApi.reducer,
+
     profile: profileReducer,
+    [profileApi.reducerPath]: profileApi.reducer,
   },
+  middleware: (gDM) =>
+    gDM().concat(profileApi.middleware).concat(productsApi.middleware),
 });

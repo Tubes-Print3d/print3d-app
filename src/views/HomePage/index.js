@@ -2,16 +2,15 @@ import { Container, Grid, makeStyles } from "@material-ui/core";
 import * as React from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
 
 import berandaImg from "./beranda.png";
 import LoginDialog from "../../features/profile/LoginDialog";
 import Button from "../../components/Button";
-import { selectToken } from "../../features/profile/profileSlice";
+import { useLoggedIn } from "../../hooks/pengguna";
 
 const useStyle = makeStyles((theme) => ({
   root: {
-    background: `url(${berandaImg}), ${theme.palette.primary.main}`,
+    background: `url(${berandaImg}), ${theme.palette.background.default}`,
     backgroundRepeat: "no-repeat",
     backgroundSize: "100%",
     minHeight: "100vh",
@@ -22,18 +21,18 @@ const useStyle = makeStyles((theme) => ({
   },
 }));
 
-function HomePage() {
+function HomePage({ location }) {
   const classes = useStyle();
-  const [dialogOpen, setDialogOpen] = useState(false);
+  const [dialogOpen, setDialogOpen] = useState(location.state?.login);
   const [dialogMode, setDialogMode] = useState("login");
-  const profileToken = useSelector(selectToken);
+  const isLoggedIn = useLoggedIn();
 
   return (
     <div className={classes.root}>
       <Container>
         <Grid container className={classes.row1} spacing={2} justify="flex-end">
           <Grid item>
-            <Button variant="contained" component={Link} to="/wishlist">
+            <Button variant="outlined" disabled component={Link} to="/wishlist">
               Wishlist
             </Button>
           </Grid>
@@ -43,7 +42,7 @@ function HomePage() {
             </Button>
           </Grid>
         </Grid>
-        {profileToken !== null && (
+        {!isLoggedIn && (
           <Grid container spacing={4}>
             <Grid item>
               <Button
