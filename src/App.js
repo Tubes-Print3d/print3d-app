@@ -9,6 +9,7 @@ import ProductPage from "./features/products/ProductPage";
 import DetailProductPage from "./features/products/DetailProductPage";
 import CheckoutPage from "./features/orders/CheckoutPage";
 import AddProduct from "./features/products/AddProduct";
+import EditProduct from "./features/products/EditProduct";
 
 import PrivateRoute from "./components/PrivateRoute";
 
@@ -20,7 +21,7 @@ function App() {
         <Route component={ProfilePage} path="/profil" />
         <Route component={ProductPage} exact path="/produk" />
         <PrivateRoute children={<AddProduct />} path="/produk/tambah" />
-
+        <PrivateRoute children={<EditProduct />} path="/produk/ubah/:id" />
         <Route component={DetailProductPage} exact path="/produk/:id" />
         <Route component={CheckoutPage} exact path="/checkout" />
         <Route component={NotFoundPage} path="*" />

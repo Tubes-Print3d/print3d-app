@@ -35,6 +35,7 @@ export default function DetailProductPage() {
       <WithLoading loading={isLoading}>
         {product && (
           <ProductForm
+            readOnly
             formikSetup={{
               initialValues: {
                 nama: product.nama,

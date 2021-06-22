@@ -28,6 +28,10 @@ import currency from "../../utils/currency";
 const useStyles = makeStyles((theme) => ({
   root: {
     position: "relative",
+    height: "100%",
+    "& .MuiCardActionArea-root": {
+      height: "100%",
+    },
   },
   settingButton: {
     position: "absolute",

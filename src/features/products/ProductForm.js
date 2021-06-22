@@ -64,6 +64,7 @@ function ProductForm({ actionComponent, formikSetup, ...props }) {
                             label="Pemilik"
                             name="pemilik"
                             readOnly={true}
+                            disabled
                           />
                         </Grid>
                       </Grid>

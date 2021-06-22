@@ -24,6 +24,16 @@ const styles = (theme) => ({
     background: "none",
     color: theme.palette.primary.light,
   },
+  textField: {
+    "& .Mui-disabled": {
+      "&.MuiInputBase-root": {
+        color: "rgba(0,0,0,0.5)",
+      },
+      "&.MuiFormLabel-root": {
+        color: "rgba(255, 187, 0, .8)",
+      },
+    },
+  },
 });
 
 /**

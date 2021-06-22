@@ -32,7 +32,7 @@ function HomePage({ location }) {
       <Container>
         <Grid container className={classes.row1} spacing={2} justify="flex-end">
           <Grid item>
-            <Button variant="contained" component={Link} to="/wishlist">
+            <Button variant="outlined" disabled component={Link} to="/wishlist">
               Wishlist
             </Button>
           </Grid>

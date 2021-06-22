@@ -1,6 +1,7 @@
 import * as React from "react";
 import { useState } from "react";
 import { Container, Grid, Typography } from "@material-ui/core";
+import { useHistory } from "react-router-dom";
 
 import ProductCard from "./ProductCard";
 import HeadTitle from "../../components/HeadTitle";
@@ -14,12 +15,15 @@ import { useSnackbar } from "notistack";
 function ProductPage() {
   const { data: allProducts, isLoading } = useGetProductsQuery();
 
-  const [filter, setFilter] = useState("my"); // null, 'my'
   const pengguna = usePengguna();
+  const isDesainer = pengguna.data?.roles.includes("desainer");
+
+  const [filter, setFilter] = useState(isDesainer ? "my" : null); // null, 'my'
 
   const [deleteProduct] = useDeleteProductMutation();
 
   const { enqueueSnackbar } = useSnackbar();
+  const history = useHistory();
 
   const products =
     pengguna?.data && filter === "my"
@@ -46,6 +50,12 @@ function ProductPage() {
                 <ProductCard
                   produk={produk}
                   control={produk.pemilik._id === pengguna.data?._id}
+                  onEdit={(produk) => {
+                    history.push({
+                      pathname: `/produk/ubah/${produk._id}`,
+                      state: { product: produk },
+                    });
+                  }}
                   onDelete={(produk) => {
                     deleteProduct(produk._id)
                       .unwrap()

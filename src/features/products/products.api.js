@@ -13,24 +13,33 @@ export const api = createApi({
       return headers;
     },
   }),
-  tagTypes: ["Product"],
+  tagTypes: ["Products"],
   endpoints: (builder) => ({
     getProducts: builder.query({
       query: () => ({ url: "" }),
       transformResponse: (response) => response.payload,
       providesTags: (results) =>
         results
-          ? [...results.map((v) => ({ type: "Product", id: v._id })), "Product"]
-          : ["Product"],
+          ? [
+              ...results.map(({ _id }) => ({ type: "Products", id: _id })),
+              "Products",
+            ]
+          : ["Products"],
     }),
     addProduct: builder.mutation({
       query: (body) => ({ url: "", method: "POST", body }),
       transformResponse: (res) => res.payload,
-      invalidatesTags: ["Product"],
+      invalidatesTags: ["Products"],
+    }),
+    editProduct: builder.mutation({
+      query: ({ id, body }) => {
+        return { url: `/${id}`, method: "PUT", body };
+      },
+      invalidatesTags: ["Products"],
     }),
     deleteProduct: builder.mutation({
       query: (id) => ({ url: `/${id}`, method: "DELETE" }),
-      invalidatesTags: ["Product"],
+      invalidatesTags: ["Products"],
     }),
   }),
 });
@@ -38,5 +47,6 @@ export const api = createApi({
 export const {
   useGetProductsQuery,
   useAddProductMutation,
+  useEditProductMutation,
   useDeleteProductMutation,
 } = api;
