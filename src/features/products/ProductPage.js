@@ -6,15 +6,20 @@ import ProductCard from "./ProductCard";
 import HeadTitle from "../../components/HeadTitle";
 import WithLoading from "../../components/WithLoading";
 import Navbar from "../../components/Navbar";
-import { useGetProductsQuery } from "./products.api";
+import { useDeleteProductMutation, useGetProductsQuery } from "./products.api";
 import ProductToolbar from "./ProductToolbar";
 import { usePengguna } from "../../hooks/pengguna";
+import { useSnackbar } from "notistack";
 
 function ProductPage() {
   const { data: allProducts, isLoading } = useGetProductsQuery();
 
   const [filter, setFilter] = useState("my"); // null, 'my'
   const pengguna = usePengguna();
+
+  const [deleteProduct] = useDeleteProductMutation();
+
+  const { enqueueSnackbar } = useSnackbar();
 
   const products =
     pengguna?.data && filter === "my"
@@ -40,7 +45,19 @@ function ProductPage() {
               <Grid item key={i} xs={6} sm={4} md={3} lg={2}>
                 <ProductCard
                   produk={produk}
-                  setting={produk.pemilik._id === pengguna.data?._id}
+                  control={produk.pemilik._id === pengguna.data?._id}
+                  onDelete={(produk) => {
+                    deleteProduct(produk._id)
+                      .unwrap()
+                      .then((res) => {
+                        enqueueSnackbar("Produk berhasil dihapus", {
+                          variant: "success",
+                        });
+                      })
+                      .catch((error) => {
+                        enqueueSnackbar(error.data.error, { variant: "error" });
+                      });
+                  }}
                 />
               </Grid>
             ))

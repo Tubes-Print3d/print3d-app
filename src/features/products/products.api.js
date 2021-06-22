@@ -28,7 +28,15 @@ export const api = createApi({
       transformResponse: (res) => res.payload,
       invalidatesTags: ["Product"],
     }),
+    deleteProduct: builder.mutation({
+      query: (id) => ({ url: `/${id}`, method: "DELETE" }),
+      invalidatesTags: ["Product"],
+    }),
   }),
 });
 
-export const { useGetProductsQuery, useAddProductMutation } = api;
+export const {
+  useGetProductsQuery,
+  useAddProductMutation,
+  useDeleteProductMutation,
+} = api;

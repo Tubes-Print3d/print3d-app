@@ -51,6 +51,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["formik", "virtual:02c9e562898d49e7950aff6b505bf8dd8d8423780641c16ebeb577ac5f3b26eeb2fc5ce211d74d1023c20abffe52fa115049d412ae2e1fea7a63be8396f85c37#npm:2.2.9"],
             ["formik-material-ui", "virtual:02c9e562898d49e7950aff6b505bf8dd8d8423780641c16ebeb577ac5f3b26eeb2fc5ce211d74d1023c20abffe52fa115049d412ae2e1fea7a63be8396f85c37#npm:3.0.1"],
             ["material-ui-image", "virtual:02c9e562898d49e7950aff6b505bf8dd8d8423780641c16ebeb577ac5f3b26eeb2fc5ce211d74d1023c20abffe52fa115049d412ae2e1fea7a63be8396f85c37#npm:3.3.1"],
+            ["material-ui-popup-state", "virtual:02c9e562898d49e7950aff6b505bf8dd8d8423780641c16ebeb577ac5f3b26eeb2fc5ce211d74d1023c20abffe52fa115049d412ae2e1fea7a63be8396f85c37#npm:1.8.3"],
             ["notistack", "virtual:02c9e562898d49e7950aff6b505bf8dd8d8423780641c16ebeb577ac5f3b26eeb2fc5ce211d74d1023c20abffe52fa115049d412ae2e1fea7a63be8396f85c37#npm:1.0.9"],
             ["prop-types", "npm:15.7.2"],
             ["react", "npm:17.0.1"],
@@ -4911,6 +4912,14 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["@material-ui/types", [
+        ["npm:4.1.1", {
+          "packageLocation": "./.yarn/cache/@material-ui-types-npm-4.1.1-142f4d8f48-b5ee63a896.zip/node_modules/@material-ui/types/",
+          "packageDependencies": [
+            ["@material-ui/types", "npm:4.1.1"],
+            ["@types/react", "npm:17.0.3"]
+          ],
+          "linkType": "HARD",
+        }],
         ["npm:5.1.0", {
           "packageLocation": "./.yarn/cache/@material-ui-types-npm-5.1.0-19cb52ee2a-0985676618.zip/node_modules/@material-ui/types/",
           "packageDependencies": [
@@ -8475,6 +8484,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["define-property", "npm:0.2.5"],
             ["isobject", "npm:3.0.1"],
             ["static-extend", "npm:0.1.2"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["classnames", [
+        ["npm:2.3.1", {
+          "packageLocation": "./.yarn/cache/classnames-npm-2.3.1-f2ae0a8d3c-57d536eded.zip/node_modules/classnames/",
+          "packageDependencies": [
+            ["classnames", "npm:2.3.1"]
           ],
           "linkType": "HARD",
         }]
@@ -15396,6 +15414,32 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
+      ["material-ui-popup-state", [
+        ["npm:1.8.3", {
+          "packageLocation": "./.yarn/cache/material-ui-popup-state-npm-1.8.3-98a1513c9a-d05f14c963.zip/node_modules/material-ui-popup-state/",
+          "packageDependencies": [
+            ["material-ui-popup-state", "npm:1.8.3"]
+          ],
+          "linkType": "SOFT",
+        }],
+        ["virtual:02c9e562898d49e7950aff6b505bf8dd8d8423780641c16ebeb577ac5f3b26eeb2fc5ce211d74d1023c20abffe52fa115049d412ae2e1fea7a63be8396f85c37#npm:1.8.3", {
+          "packageLocation": "./.yarn/$$virtual/material-ui-popup-state-virtual-05a62b202b/0/cache/material-ui-popup-state-npm-1.8.3-98a1513c9a-d05f14c963.zip/node_modules/material-ui-popup-state/",
+          "packageDependencies": [
+            ["material-ui-popup-state", "virtual:02c9e562898d49e7950aff6b505bf8dd8d8423780641c16ebeb577ac5f3b26eeb2fc5ce211d74d1023c20abffe52fa115049d412ae2e1fea7a63be8396f85c37#npm:1.8.3"],
+            ["@babel/runtime", "npm:7.13.10"],
+            ["@material-ui/types", "npm:4.1.1"],
+            ["@types/react", null],
+            ["classnames", "npm:2.3.1"],
+            ["prop-types", "npm:15.7.2"],
+            ["react", "npm:17.0.1"]
+          ],
+          "packagePeers": [
+            "@types/react",
+            "react"
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
       ["md5.js", [
         ["npm:1.3.5", {
           "packageLocation": "./.yarn/cache/md5.js-npm-1.3.5-130901125a-ca0b260ea2.zip/node_modules/md5.js/",
@@ -18320,6 +18364,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["formik", "virtual:02c9e562898d49e7950aff6b505bf8dd8d8423780641c16ebeb577ac5f3b26eeb2fc5ce211d74d1023c20abffe52fa115049d412ae2e1fea7a63be8396f85c37#npm:2.2.9"],
             ["formik-material-ui", "virtual:02c9e562898d49e7950aff6b505bf8dd8d8423780641c16ebeb577ac5f3b26eeb2fc5ce211d74d1023c20abffe52fa115049d412ae2e1fea7a63be8396f85c37#npm:3.0.1"],
             ["material-ui-image", "virtual:02c9e562898d49e7950aff6b505bf8dd8d8423780641c16ebeb577ac5f3b26eeb2fc5ce211d74d1023c20abffe52fa115049d412ae2e1fea7a63be8396f85c37#npm:3.3.1"],
+            ["material-ui-popup-state", "virtual:02c9e562898d49e7950aff6b505bf8dd8d8423780641c16ebeb577ac5f3b26eeb2fc5ce211d74d1023c20abffe52fa115049d412ae2e1fea7a63be8396f85c37#npm:1.8.3"],
             ["notistack", "virtual:02c9e562898d49e7950aff6b505bf8dd8d8423780641c16ebeb577ac5f3b26eeb2fc5ce211d74d1023c20abffe52fa115049d412ae2e1fea7a63be8396f85c37#npm:1.0.9"],
             ["prop-types", "npm:15.7.2"],
             ["react", "npm:17.0.1"],

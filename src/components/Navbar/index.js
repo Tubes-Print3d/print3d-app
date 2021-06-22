@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
     top: 0,
     left: 0,
     paddingTop: theme.spacing(9),
-    width: "100%",
+    width: "calc(100vw - 17px)",
   },
 }));
 
@@ -82,7 +82,7 @@ function Navbar(props) {
             </Grid>
           </Grid>
           <Grid item>
-            {isLoggedIn && (
+            {isLoggedIn ? (
               <Grid container spacing={3} direction="row" alignItems="center">
                 <Grid item>
                   <IconButton
@@ -106,6 +106,18 @@ function Navbar(props) {
                   </Tombol>
                 </Grid>
               </Grid>
+            ) : (
+              <Tombol
+                variant="contained"
+                onClick={() => {
+                  history.push({
+                    pathname: "/",
+                    state: { from: history.location, login: true },
+                  });
+                }}
+              >
+                MASUK
+              </Tombol>
             )}
           </Grid>
         </Grid>

@@ -88,7 +88,6 @@ function LoginDialog({ open, onClose, registerMode, ...props }) {
           enqueueSnackbar(`Selamat datang, ${payload.nama}`, {
             variant: "success",
           });
-          console.debug(history.location.state);
           history.push(history.location.state?.from?.pathname || "/produk");
         } catch (error) {
           for (const err of error.data.error) {
@@ -110,7 +109,6 @@ function LoginDialog({ open, onClose, registerMode, ...props }) {
           enqueueSnackbar(`Selamat datang kembali, ${payload.nama}`, {
             variant: "success",
           });
-          console.debug(history.location.state);
           history.push(history.location.state?.from?.pathname || "/produk");
         } catch (error) {
           enqueueSnackbar(error.data.error.msg, { variant: "error" });

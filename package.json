@@ -13,6 +13,7 @@
     "formik": "^2.2.9",
     "formik-material-ui": "^3.0.1",
     "material-ui-image": "^3.3.1",
+    "material-ui-popup-state": "^1.8.3",
     "notistack": "^1.0.9",
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
