@@ -2,16 +2,15 @@ import { Container, Grid, makeStyles } from "@material-ui/core";
 import * as React from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
 
 import berandaImg from "./beranda.png";
 import LoginDialog from "../../features/profile/LoginDialog";
 import Button from "../../components/Button";
-import { selectToken } from "../../features/profile/profileSlice";
+import { useLoggedIn } from "../../hooks/pengguna";
 
 const useStyle = makeStyles((theme) => ({
   root: {
-    background: `url(${berandaImg}), ${theme.palette.primary.main}`,
+    background: `url(${berandaImg}), ${theme.palette.background.default}`,
     backgroundRepeat: "no-repeat",
     backgroundSize: "100%",
     minHeight: "100vh",
@@ -26,7 +25,7 @@ function HomePage() {
   const classes = useStyle();
   const [dialogOpen, setDialogOpen] = useState(false);
   const [dialogMode, setDialogMode] = useState("login");
-  const profileToken = useSelector(selectToken);
+  const isLoggedIn = useLoggedIn();
 
   return (
     <div className={classes.root}>
@@ -43,7 +42,7 @@ function HomePage() {
             </Button>
           </Grid>
         </Grid>
-        {!profileToken && (
+        {!isLoggedIn && (
           <Grid container spacing={4}>
             <Grid item>
               <Button

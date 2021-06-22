@@ -1,18 +1,19 @@
 import * as React from "react";
 import { useState } from "react";
-import PropTypes from "prop-types";
 import { useSnackbar } from "notistack";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 import { Container, Grid, IconButton, makeStyles } from "@material-ui/core";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import HomeIcon from "@material-ui/icons/Home";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
+import SwapHorizIcon from "@material-ui/icons/SwapHoriz";
 
 import Keranjang from "../../features/profile/Keranjang";
 import Tombol from "../Button";
-import { selectToken, logout } from "../../features/profile/profileSlice";
+import { logout } from "../../features/profile/profile.slice";
+import { useLoggedIn } from "../../hooks/pengguna";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -24,11 +25,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Navbar({ ...props }) {
+function Navbar(props) {
   const classes = useStyles();
 
   const dispatch = useDispatch();
-  const loggedIn = useSelector(selectToken);
+  const isLoggedIn = useLoggedIn();
 
   const history = useHistory();
   const { enqueueSnackbar } = useSnackbar();
@@ -48,7 +49,7 @@ function Navbar({ ...props }) {
           alignItems="center"
         >
           <Grid item>
-            <Grid container spacing={1}>
+            <Grid container spacing={1} alignItems="center">
               {history.length > 2 && (
                 <Grid item>
                   <IconButton
@@ -71,11 +72,18 @@ function Navbar({ ...props }) {
                   <HomeIcon color="primary" />
                 </IconButton>
               </Grid>
+              {isLoggedIn && (
+                <Grid item>
+                  <Tombol variant="outlined" endIcon={<SwapHorizIcon />}>
+                    GANTI AKUN
+                  </Tombol>
+                </Grid>
+              )}
             </Grid>
           </Grid>
           <Grid item>
-            <Grid container spacing={3} direction="row" alignItems="center">
-              {loggedIn && (
+            {isLoggedIn && (
+              <Grid container spacing={3} direction="row" alignItems="center">
                 <Grid item>
                   <IconButton
                     color="primary"
@@ -86,11 +94,9 @@ function Navbar({ ...props }) {
                     <ShoppingCartIcon color="primary" />
                   </IconButton>
                 </Grid>
-              )}
-              <Grid item>
-                {loggedIn && (
+                <Grid item>
                   <Tombol
-                    variant="contained"
+                    variant="outlined"
                     onClick={() => {
                       dispatch(logout());
                       enqueueSnackbar("Sampai jumpa 👋", { variant: "info" });
@@ -98,9 +104,9 @@ function Navbar({ ...props }) {
                   >
                     KELUAR
                   </Tombol>
-                )}
+                </Grid>
               </Grid>
-            </Grid>
+            )}
           </Grid>
         </Grid>
       </Container>

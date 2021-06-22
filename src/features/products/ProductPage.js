@@ -1,22 +1,20 @@
 import * as React from "react";
 import { Container, Grid, Typography } from "@material-ui/core";
-import { useSelector } from "react-redux";
 
 import ProductCard from "./ProductCard";
-import { selectAllProducts, selectProductsStatus } from "./productsSlice";
 import HeadTitle from "../../components/HeadTitle";
 import WithLoading from "../../components/WithLoading";
 import Navbar from "../../components/Navbar";
+import { useGetProductsQuery } from "./products.api";
 
 function ProductPage() {
-  const products = useSelector(selectAllProducts);
-  const status = useSelector(selectProductsStatus);
+  const { data: products, isLoading } = useGetProductsQuery();
 
   return (
     <Container>
       <Navbar />
       <HeadTitle top="DAFTAR" bottom="PRODUK" />
-      <WithLoading loading={status === "loading"}>
+      <WithLoading loading={isLoading}>
         <Grid container spacing={2}>
           {products && products.length ? (
             products.map((produk, i) => (

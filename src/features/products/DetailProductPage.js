@@ -1,29 +1,44 @@
 import React from "react";
-import HeadTitle from "../../components/HeadTitle";
 import { Container, Grid, Box } from "@material-ui/core";
-import Tombol from "../../components/Button";
 import Image from "material-ui-image";
-import noImage from "./no-image.jpg";
-import TextFieldKuning from "../../components/TextFieldKuning";
-import { useSelector } from "react-redux";
-import { selectProductById, selectProductsStatus } from "./productsSlice";
+import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
+import { useSnackbar } from "notistack";
+
+import noImage from "./no-image.jpg";
+
 import NotFoundPage from "../../views/NotFoundPage";
+
+import TextFieldKuning from "../../components/TextFieldKuning";
 import WithLoading from "../../components/WithLoading";
+import HeadTitle from "../../components/HeadTitle";
+import Tombol from "../../components/Button";
 import Navbar from "../../components/Navbar";
+// import { addToCart } from "../profile/profile.slice";
+import { useGetProductsQuery } from "./products.api";
+import { useAddToCartMutation } from "../profile/profile.api";
 
 export default function DetailProductPage() {
   const { id } = useParams();
-  const product = useSelector(selectProductById(id));
-  const status = useSelector(selectProductsStatus);
 
-  if (status !== "loading" && !product) return <NotFoundPage />;
+  const { enqueueSnackbar } = useSnackbar();
+  const dispatch = useDispatch();
+  const { isLoading, product } = useGetProductsQuery(null, {
+    selectFromResult: (state) => ({
+      product: state.data?.find((prod) => prod._id === id),
+      ...state,
+    }),
+  });
+
+  const [addToCart] = useAddToCartMutation();
+
+  if (!isLoading && !product) return <NotFoundPage />;
 
   return (
     <Container>
       <Navbar />
       <HeadTitle top="DETAIL" bottom="PRODUK" />
-      <WithLoading loading={status === "loading"}>
+      <WithLoading loading={isLoading}>
         {product && (
           <Grid container spacing={3}>
             <Grid item xs={12} md={5}>
@@ -77,10 +92,37 @@ export default function DetailProductPage() {
       <Box mt={4}>
         <Grid container justify="flex-end" spacing={3}>
           <Grid item>
-            <Tombol>Simpan ke wishlist</Tombol>
+            <Tombol
+              onClick={() => {
+                enqueueSnackbar("Belum diimplementasikan", { variant: "info" });
+              }}
+            >
+              Simpan ke wishlist
+            </Tombol>
           </Grid>
           <Grid item>
-            <Tombol>Tambah ke keranjang</Tombol>
+            <Tombol
+              onClick={async () => {
+                try {
+                  const payload = await addToCart(id).unwrap();
+                  enqueueSnackbar(
+                    "Produk berhasil ditambahkan ke dalam keranjang",
+                    { variant: "success" }
+                  );
+                } catch (error) {
+                  if (error.status === 401)
+                    enqueueSnackbar("Silahkan login terlebih dahulu", {
+                      variant: "info",
+                    });
+                  else
+                    enqueueSnackbar(error.data.error, {
+                      variant: "info",
+                    });
+                }
+              }}
+            >
+              Tambah ke keranjang
+            </Tombol>
           </Grid>
         </Grid>
       </Box>

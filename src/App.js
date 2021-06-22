@@ -1,5 +1,4 @@
 import * as React from "react";
-import { useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import HomePage from "./views/HomePage";
@@ -8,17 +7,9 @@ import ProductPage from "./features/products/ProductPage";
 import NotFoundPage from "./views/NotFoundPage";
 
 import DetailProductPage from "./features/products/DetailProductPage";
-import { useDispatch } from "react-redux";
-import { fetchProducts } from "./features/products/productsSlice";
 import CheckoutPage from "./features/orders/CheckoutPage";
 
 function App() {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchProducts());
-  }, [dispatch]);
-
   return (
     <Router>
       <Switch>
