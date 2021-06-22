@@ -38,7 +38,10 @@ function ProductPage() {
           {products && products.length ? (
             products.map((produk, i) => (
               <Grid item key={i} xs={6} sm={4} md={3} lg={2}>
-                <ProductCard produk={produk} />
+                <ProductCard
+                  produk={produk}
+                  setting={produk.pemilik._id === pengguna.data?._id}
+                />
               </Grid>
             ))
           ) : (

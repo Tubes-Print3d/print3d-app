@@ -7,7 +7,9 @@ import {
   makeStyles,
   CardActionArea,
   Grid,
+  IconButton,
 } from "@material-ui/core";
+import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
@@ -15,14 +17,32 @@ import noImage from "./no-image.jpg";
 import currency from "../../utils/currency";
 
 const useStyles = makeStyles((theme) => ({
-  root: {},
+  root: {
+    position: "relative",
+  },
+  settingButton: {
+    position: "absolute",
+    top: 0,
+    right: 0,
+    zIndex: 1,
+  },
 }));
 
-function ProductCard({ produk, ...props }) {
+function ProductCard({ produk, setting, onSetting, ...props }) {
   const classes = useStyles();
 
   return (
     <Card className={classes.root}>
+      {setting && (
+        <IconButton
+          color="secondary"
+          className={classes.settingButton}
+          aria-label="settings"
+          onSetting={onSetting}
+        >
+          <MoreHorizIcon />
+        </IconButton>
+      )}
       <CardActionArea component={Link} to={`/produk/${produk._id}`}>
         <CardMedia
           component="img"
@@ -52,6 +72,10 @@ function ProductCard({ produk, ...props }) {
     </Card>
   );
 }
+
+ProductCard.defaultProps = {
+  setting: false,
+};
 
 ProductCard.props = {
   produk: PropTypes.objectOf({

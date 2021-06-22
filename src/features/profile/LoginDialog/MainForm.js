@@ -15,13 +15,13 @@ function MainForm({ registerMode, ...props }) {
       {registerMode && (
         <Grid item xs={12}>
           <Field
+            autoFocus
             component={TextField}
             name="nama"
             className={classes.textFieldCustom}
             label="Nama lengkap"
             variant="standard"
             fullWidth
-            autoFocus
           />
         </Grid>
       )}

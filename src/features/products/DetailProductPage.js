@@ -1,8 +1,7 @@
 import React from "react";
-import { Container, Grid, Box } from "@material-ui/core";
-import { useParams } from "react-router-dom";
+import { Container, Grid, Box, Button } from "@material-ui/core";
+import { useParams, useHistory } from "react-router-dom";
 import { useSnackbar } from "notistack";
-
 import NotFoundPage from "../../views/NotFoundPage";
 
 import WithLoading from "../../components/WithLoading";
@@ -24,6 +23,7 @@ export default function DetailProductPage() {
     }),
   });
 
+  const history = useHistory();
   const [addToCart] = useAddToCartMutation();
 
   if (!isLoading && !product) return <NotFoundPage />;
@@ -47,6 +47,8 @@ export default function DetailProductPage() {
               <Grid container justify="flex-end" spacing={3}>
                 <Grid item>
                   <Tombol
+                    variant="outlined"
+                    disabled
                     onClick={() => {
                       enqueueSnackbar("Belum diimplementasikan", {
                         variant: "info",
@@ -58,6 +60,7 @@ export default function DetailProductPage() {
                 </Grid>
                 <Grid item>
                   <Tombol
+                    variant="outlined"
                     onClick={async () => {
                       try {
                         const payload = await addToCart(id).unwrap();
@@ -69,6 +72,23 @@ export default function DetailProductPage() {
                         if (error.status === 401)
                           enqueueSnackbar("Silahkan login terlebih dahulu", {
                             variant: "info",
+                            action: (
+                              <Button
+                                variant="outlined"
+                                color="textPrimary"
+                                onClick={() => {
+                                  history.push({
+                                    pathname: "/",
+                                    state: {
+                                      login: true,
+                                      from: history.location,
+                                    },
+                                  });
+                                }}
+                              >
+                                LOGIN
+                              </Button>
+                            ),
                           });
                         else
                           enqueueSnackbar(error.data.error, {
@@ -83,56 +103,8 @@ export default function DetailProductPage() {
               </Grid>
             }
           />
-          // <Grid container spacing={3}>
-          //   <Grid item xs={12} md={5}>
-          //     <Image src={noImage} />
-          //   </Grid>
-          //   <Grid item md={7}>
-          //     <Grid container direction="column" spacing={3}>
-          //       <Grid item>
-          //         <Grid container spacing={3}>
-          //           <Grid item md={6}>
-          //             <TextFieldKuning
-          //               label="Nama Produk"
-          //               value={product.nama}
-          //               readOnly
-          //             />
-          //           </Grid>
-          //           <Grid item md={6}>
-          //             <TextFieldKuning
-          //               label="Royalti"
-          //               value={product.royalty}
-          //               readOnly
-          //             />
-          //           </Grid>
-          //         </Grid>
-          //       </Grid>
-          //       <Grid item>
-          //         <TextFieldKuning
-          //           multiline
-          //           rows={5}
-          //           label="Deskripsi"
-          //           value="Lorem Ipsum dolor sit amet."
-          //           readOnly
-          //         />
-          //       </Grid>
-          //       <Grid item>
-          //         <Grid container spacing={3}>
-          //           <Grid item md={6}>
-          //             <TextFieldKuning
-          //               label="Pemilik"
-          //               value={product.pemilik.nama}
-          //               readOnly
-          //             />
-          //           </Grid>
-          //         </Grid>
-          //       </Grid>
-          //     </Grid>
-          //   </Grid>
-          // </Grid>
         )}
       </WithLoading>
-      <Box mt={4}>ab</Box>
     </Container>
   );
 }
