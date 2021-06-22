@@ -8,7 +8,7 @@ import ProfilePage from "./features/profile/ProfilePage";
 import ProductPage from "./features/products/ProductPage";
 import DetailProductPage from "./features/products/DetailProductPage";
 import CheckoutPage from "./features/orders/CheckoutPage";
-import ProductForm from "./features/products/ProductForm";
+import AddProduct from "./features/products/AddProduct";
 
 import PrivateRoute from "./components/PrivateRoute";
 
@@ -19,7 +19,7 @@ function App() {
         <Route component={HomePage} exact path="/" />
         <Route component={ProfilePage} path="/profil" />
         <Route component={ProductPage} exact path="/produk" />
-        <PrivateRoute children={<ProductForm />} path="/produk/tambah" />
+        <PrivateRoute children={<AddProduct />} path="/produk/tambah" />
 
         <Route component={DetailProductPage} exact path="/produk/:id" />
         <Route component={CheckoutPage} exact path="/checkout" />
