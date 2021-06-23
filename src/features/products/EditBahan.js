@@ -22,16 +22,16 @@ import { Grid } from "@material-ui/core";
 import HeadTitle from "../../components/HeadTitle";
 import Tombol from "../../components/Button";
 
-function createData(warna, JnsBahan, Deskripsi, qty) {
-  return { warna, JnsBahan, Deskripsi, qty };
+function createData(warna, JnsBahan, Deskripsi) {
+  return { warna, JnsBahan, Deskripsi };
 }
 
 const rows = [
-    createData("Blue", "Logam", "Logam berwarna Biru",1),
-    createData("Yellow", "Logam", "Logam berwarna Kuning",4),
-    createData("Red", "Plastik", "Plastik berwarna merah",3),
-    createData("Black", "Plastik", "Plastik berwarna hitam",5),
-    createData("Green", "Logam", "Logam berwarna hijau",2),
+    createData("Blue", "Logam", "Logam berwarna Biru"),
+    createData("Yellow", "Logam", "Logam berwarna Kuning"),
+    createData("Red", "Plastik", "Plastik berwarna merah"),
+    createData("Black", "Plastik", "Plastik berwarna hitam"),
+    createData("Green", "Logam", "Logam berwarna hijau"),
 ];
 
 function descendingComparator(a, b, orderBy) {
@@ -69,7 +69,6 @@ const headCells = [
   },
   { id: "JnsBahan", numeric: true, disablePadding: false, label: "Jenis Bahan" },
   { id: "Deskripsi", numeric: true, disablePadding: false, label: "Deskripsi" },
-  { id: "qty", numeric: true, disablePadding: false, label: "Qty" },
 ];
 
 function EnhancedTableHead(props) {
@@ -343,7 +342,6 @@ export default function EditBahan() {
                       </TableCell>
                       <TableCell align="right">{row.JnsBahan}</TableCell>
                       <TableCell align="right">{row.Deskripsi}</TableCell>
-                      <TableCell align="right">{row.qty}</TableCell>
                     </TableRow>
                   );
                 })}
