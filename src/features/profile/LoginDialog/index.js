@@ -33,7 +33,7 @@ function LoginDialog({ open, onClose, registerMode, ...props }) {
     password: "",
     rePassword: "",
     roles: [],
-    listMaterial: [],
+    // listMaterial: [],
     alamat: {
       provinsi: "",
       kabupaten: "",
@@ -72,14 +72,10 @@ function LoginDialog({ open, onClose, registerMode, ...props }) {
       onSubmit: async (values) => {
         const packed = {
           ...values,
-          listMaterial: values.listMaterial.map((jenis) => ({
-            jenis,
-            tersedia: true,
-          })),
         };
         delete packed["rePassword"];
         if (!values.roles.includes("pencetak")) {
-          delete packed.listMaterial;
+          // delete packed.listMaterial;
           delete packed.alamat;
         }
         try {

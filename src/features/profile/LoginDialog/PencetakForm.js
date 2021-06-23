@@ -89,7 +89,7 @@ function PencetakForm({ formik, ...props }) {
 
   return (
     <>
-      <Grid item xs={12}>
+      {/* <Grid item xs={12}>
         <Field
           component={TextField}
           className={classes.textFieldCustom}
@@ -99,7 +99,7 @@ function PencetakForm({ formik, ...props }) {
           helperText="Pisahkan kata dengan koma"
           fullWidth
         />
-      </Grid>
+      </Grid> */}
       <Grid
         container
         className={classes.bottomContainer}
