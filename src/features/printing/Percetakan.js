@@ -1,9 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Container } from "@material-ui/core";
-import { useHistory, useParams } from "react-router-dom";
+import { Container, Grid } from "@material-ui/core";
+import { useHistory, Route, Switch, useParams } from "react-router-dom";
 
 import SideNav from "./SideNav";
+import KelolaPesanan from "./KelolaPesanan";
+import KelolaMesin from "./KelolaMesin";
+import KelolaBahan from "./KelolaBahan";
 import HeadTitle from "../../components/HeadTitle";
 import Navbar from "../../components/Navbar";
 
@@ -17,7 +20,13 @@ function Percetakan(props) {
       <Navbar />
       <HeadTitle top="PERCETAKAN" bottom={`KELOLA ${kelola.toUpperCase()}`} />
       <SideNav />
-      <Container>Konten Percetakan</Container>
+      <Grid container>
+        <Switch>
+          <Route children={<KelolaPesanan />} path="/percetakan/pesanan" />
+          <Route children={<KelolaBahan />} path="/percetakan/bahan" />
+          <Route children={<KelolaMesin />} path="/percetakan/mesin" />
+        </Switch>
+      </Grid>
     </Container>
   );
 }

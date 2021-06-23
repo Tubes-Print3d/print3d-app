@@ -46,7 +46,7 @@ function SideNav(props) {
             />
           </ListItem>
           <Divider />
-          <ListItem button onClick={goto("")}>
+          <ListItem button onClick={goto("/pesanan")}>
             <ListItemIcon color="primary">
               <AssignmentIcon />
             </ListItemIcon>

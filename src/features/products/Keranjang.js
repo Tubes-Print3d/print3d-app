@@ -51,7 +51,7 @@ export default function Keranjang() {
 
   return (
     <Container>
-         <Grid container justify="center">
+      <Grid container justify="center">
         <Box mt={9}>
           <Paper className={classes.Paper}>
             <Grid
@@ -61,36 +61,52 @@ export default function Keranjang() {
               alignItems="center"
               spacing={2}
             >
-            <Typography className={classes.Typography} variant ="h3"> <b><i>Keranjang</i></b></Typography>
-                </Grid>
-            
-      <List dense className={classes.root} width="720
-      ">
-        {[0, 1, 2, 3, 4, 5, 6, 7, 8].map((value) => {
-          const labelId = `checkbox-list-secondary-label-${value}`;
-          return (
-            <ListItem key={value} button>
-              <ListItemAvatar>
-                <Avatar alt={`Avatar n°${value + 1}`} Image src={noImage} />
-              </ListItemAvatar>
-              <ListItemText id={labelId} primary={`Contoh Produk ${value + 1}`} />
-              <ListItemSecondaryAction>
-                <Checkbox
-                  edge="end"
-                  onChange={handleToggle(value)}
-                  checked={checked.indexOf(value) !== -1}
-                  inputProps={{ "aria-labelledby": labelId }}
-                />
-              </ListItemSecondaryAction>
-            </ListItem>
-          );
-        })}
-      </List>
-      </Paper>
-      <Grid container justify='flex-end'>
-      <Tombol spacing={2}>Checkout</Tombol>
-      </Grid>
-      </Box>
+              <Typography className={classes.Typography} variant="h3">
+                {" "}
+                <b>
+                  <i>Keranjang</i>
+                </b>
+              </Typography>
+            </Grid>
+
+            <List
+              dense
+              className={classes.root}
+              width="720
+      "
+            >
+              {[0, 1, 2, 3, 4, 5, 6, 7, 8].map((value) => {
+                const labelId = `checkbox-list-secondary-label-${value}`;
+                return (
+                  <ListItem key={value} button>
+                    <ListItemAvatar>
+                      <Avatar
+                        alt={`Avatar n°${value + 1}`}
+                        Image
+                        src={noImage}
+                      />
+                    </ListItemAvatar>
+                    <ListItemText
+                      id={labelId}
+                      primary={`Contoh Produk ${value + 1}`}
+                    />
+                    <ListItemSecondaryAction>
+                      <Checkbox
+                        edge="end"
+                        onChange={handleToggle(value)}
+                        checked={checked.indexOf(value) !== -1}
+                        inputProps={{ "aria-labelledby": labelId }}
+                      />
+                    </ListItemSecondaryAction>
+                  </ListItem>
+                );
+              })}
+            </List>
+          </Paper>
+          <Grid container justify="flex-end">
+            <Tombol spacing={2}>Checkout</Tombol>
+          </Grid>
+        </Box>
       </Grid>
     </Container>
   );
