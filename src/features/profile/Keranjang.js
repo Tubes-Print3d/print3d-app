@@ -13,10 +13,8 @@ import {
 } from "@material-ui/core";
 import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline";
 import { useHistory } from "react-router-dom";
-import { useSelector } from "react-redux";
 
 import Tombol from "../../components/Button";
-import { selectKeranjang } from "./profile.slice";
 import { useGetKeranjangQuery, useRemoveFromCartMutation } from "./profile.api";
 import WithLoading from "../../components/WithLoading";
 import { useSnackbar } from "notistack";
@@ -112,7 +110,7 @@ function Keranjang({ popoverId, ...props }) {
                           size="medium"
                           onClick={async () => {
                             try {
-                              const res = await removeFromCart(itemId).unwrap();
+                              await removeFromCart(itemId).unwrap();
                               enqueueSnackbar("Produk dihapus dari keranjang", {
                                 variant: "info",
                               });

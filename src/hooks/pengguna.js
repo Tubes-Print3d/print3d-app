@@ -1,15 +1,11 @@
 import { useMemo } from "react";
 import { useSelector } from "react-redux";
-import {
-  selectKeranjang,
-  selectPengguna,
-} from "../features/profile/profile.slice";
+import { selectKeranjang } from "../features/profile/profile.slice";
 
 export const usePengguna = () => {
-  // const pengguna = useSelector(selectPengguna);
   const pengguna = useSelector((state) => state.profile);
   const { data, keranjang } = pengguna;
-  return useMemo(() => ({ data, keranjang }), [pengguna]);
+  return useMemo(() => ({ data, keranjang }), [data, keranjang]);
 };
 
 export const useKeranjang = () => {

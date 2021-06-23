@@ -36,7 +36,6 @@ function ProductPage() {
     <Container>
       <Navbar />
       <HeadTitle top="DAFTAR" bottom="PRODUK" />
-<<<<<<< HEAD
       {pengguna?.data?.roles.includes("desainer") && (
         <ProductToolbar
           filter={filter}
@@ -44,9 +43,6 @@ function ProductPage() {
         />
       )}
       <WithLoading loading={isLoading}>
-=======
-      
->>>>>>> d64b06edc9fcbfb5f8eea447b7bd15d157d1e9e9
         <Grid container spacing={2}>
           {products && products.length ? (
             products.map((produk, i) => (
@@ -83,7 +79,7 @@ function ProductPage() {
             </Grid>
           )}
         </Grid>
-      
+      </WithLoading>
     </Container>
   );
 }

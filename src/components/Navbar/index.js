@@ -9,11 +9,13 @@ import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import HomeIcon from "@material-ui/icons/Home";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import SwapHorizIcon from "@material-ui/icons/SwapHoriz";
+import MenuIcon from "@material-ui/icons/Menu";
 
 import Keranjang from "../../features/profile/Keranjang";
 import Tombol from "../Button";
 import { logout } from "../../features/profile/profile.slice";
 import { useLoggedIn } from "../../hooks/pengguna";
+import { useDrawer } from "../../hooks/percetakan";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -33,6 +35,7 @@ function Navbar(props) {
 
   const history = useHistory();
   const { enqueueSnackbar } = useSnackbar();
+  const { drawerControl } = useDrawer();
 
   const [keranjangAnchorEl, setKeranjangAnchorEl] = useState(null);
   const keranjangIsOpen = Boolean(keranjangAnchorEl);
@@ -50,6 +53,13 @@ function Navbar(props) {
         >
           <Grid item>
             <Grid container spacing={1} alignItems="center">
+              {history.location.pathname.includes("/percetakan") && (
+                <Grid item>
+                  <IconButton {...drawerControl} color="primary">
+                    <MenuIcon />
+                  </IconButton>
+                </Grid>
+              )}
               {history.length > 2 && (
                 <Grid item>
                   <IconButton
@@ -74,7 +84,15 @@ function Navbar(props) {
               </Grid>
               {isLoggedIn && (
                 <Grid item>
-                  <Tombol variant="outlined" endIcon={<SwapHorizIcon />}>
+                  <Tombol
+                    variant="outlined"
+                    endIcon={<SwapHorizIcon />}
+                    onClick={() => {
+                      if (history.location.pathname.includes("/produk"))
+                        history.push("/percetakan");
+                      else history.push("/produk");
+                    }}
+                  >
                     GANTI AKUN
                   </Tombol>
                 </Grid>

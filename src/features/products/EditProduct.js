@@ -36,7 +36,7 @@ function EditProduct(props) {
       const packet = { ...values };
       delete packet.pemilik;
       try {
-        const res = await editProduct({ id, body: packet }).unwrap();
+        await editProduct({ id, body: packet }).unwrap();
         enqueueSnackbar("Produk berhasil diubah", { variant: "success" });
         history.push("/produk");
       } catch (error) {
