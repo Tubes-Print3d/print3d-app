@@ -38,7 +38,7 @@ function App() {
         <PrivateRoute children={<AddProduct />} path="/produk/tambah" />
         <PrivateRoute children={<EditProduct />} path="/produk/ubah/:id" />
         <Route component={DetailProductPage} exact path="/produk/:id" />
-        <Route children={<EditMesin />} path="/dummy" />
+        <PrivateRoute children={<CheckoutPage />} path="/checkout" />
         <Redirect exact from="/percetakan" to="/percetakan/pesanan" />
         <PrivateRoute children={<Percetakan />} path="/percetakan/:kelola" />
         <Route component={NotFoundPage} path="*" />

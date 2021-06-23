@@ -10,6 +10,9 @@ const useStyles = makeStyles((theme) => ({
     flex: 1,
     "& .MuiDataGrid-root": {
       color: theme.palette.primary.main,
+      "& .MuiDataGrid-cell--editing": {
+        backgroundColor: "unset",
+      },
     },
   },
   action: {
@@ -25,7 +28,7 @@ function DataContainer({ rows, columns, action, ...props }) {
       <Grid item>
         <div className={classes.root}>
           <div style={{ flexGrow: 1 }}>
-            <DataGrid rows={rows} columns={columns} />
+            <DataGrid rows={rows} columns={columns} {...props} />
           </div>
         </div>
       </Grid>

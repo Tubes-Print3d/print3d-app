@@ -135,7 +135,14 @@ function Keranjang({ popoverId, ...props }) {
             )}
           </WithLoading>
         </Grid>
-        <Tombol variant="contained">CHECKOUT</Tombol>
+        <Tombol
+          variant="contained"
+          onClick={() => {
+            history.push("/checkout");
+          }}
+        >
+          CHECKOUT
+        </Tombol>
       </Grid>
     </Popover>
   );

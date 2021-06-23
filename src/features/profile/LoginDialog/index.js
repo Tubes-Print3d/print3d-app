@@ -33,11 +33,10 @@ function LoginDialog({ open, onClose, registerMode, ...props }) {
     password: "",
     rePassword: "",
     roles: [],
-    // listMaterial: [],
     alamat: {
-      provinsi: "",
-      kabupaten: "",
-      kecamatan: "",
+      provinsi: null,
+      kabupaten: null,
+      kecamatan: null,
       kodepos: "",
       alamat: "",
       koordinat: {
