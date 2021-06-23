@@ -1,46 +1,12 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
 import { Field } from "formik";
-import { TextField, Select } from "formik-material-ui";
-import {
-  FormControl,
-  Grid,
-  InputLabel,
-  MenuItem,
-  Typography,
-} from "@material-ui/core";
-import { v4 as uuidv4 } from "uuid";
+import { TextField } from "formik-material-ui";
+import { Grid, Typography } from "@material-ui/core";
 
 import useStyles from "./styles";
+import SimpleSelect from "../../../components/SimpleSelect";
 import api from "../../../utils/api";
-
-const SimpleSelect = ({ items, label, ...props }) => {
-  const classes = useStyles();
-  const id = `${props.name}-${uuidv4()}`;
-  return (
-    <FormControl className={classes.textFieldCustom} fullWidth>
-      <InputLabel htmlFor={id}>{label}</InputLabel>
-      <Field component={Select} inputProps={{ id }} {...props}>
-        {items.map((label, i) => (
-          <MenuItem value={label} key={i}>
-            {label}
-          </MenuItem>
-        ))}
-      </Field>
-    </FormControl>
-  );
-};
-
-// const daftarAlamat = [
-//   {
-//     nama: "Jawa Barat",
-//     kabupaten: [{ nama: "Bandung", kecamatan: ["Bojongsoang"] }],
-//   },
-//   {
-//     nama: "Riau",
-//     kabupaten: [{ nama: "Rokan Hilir", kecamatan: ["Bagan Sinembah"] }],
-//   },
-// ];
 
 function PencetakForm({ formik, ...props }) {
   const classes = useStyles();
@@ -48,6 +14,9 @@ function PencetakForm({ formik, ...props }) {
   const [daftarProvinsi, setDaftarProvinsi] = useState([]);
   const [daftarKabupaten, setDaftarKabupaten] = useState([]);
   const [daftarKecamatan, setDaftarKecamatan] = useState([]);
+
+  // console.debug({ daftarProvinsi, daftarKabupaten, daftarKecamatan });
+  console.debug(alamat);
 
   // GET provinsi
   useEffect(() => {
@@ -89,17 +58,6 @@ function PencetakForm({ formik, ...props }) {
 
   return (
     <>
-      <Grid item xs={12}>
-        <Field
-          component={TextField}
-          className={classes.textFieldCustom}
-          label="Material yang tersedia"
-          name="listMaterial"
-          variant="standard"
-          helperText="Pisahkan kata dengan koma"
-          fullWidth
-        />
-      </Grid>
       <Grid
         container
         className={classes.bottomContainer}
@@ -127,13 +85,6 @@ function PencetakForm({ formik, ...props }) {
               label="Pilih Kabupaten"
               name="alamat.kabupaten"
               items={daftarKabupaten.map((v) => v.nama)}
-              // items={
-              //   alamat.provinsi
-              //     ? daftarAlamat
-              //         .find((prov) => prov.nama === alamat.provinsi)
-              //         ?.kabupaten.map((v) => v.nama)
-              //     : []
-              // }
               disabled={!alamat.provinsi}
             />
           </Grid>
@@ -142,14 +93,6 @@ function PencetakForm({ formik, ...props }) {
               label="Pilih Kecamatan"
               name="alamat.kecamatan"
               items={daftarKecamatan.map((v) => v.nama)}
-              // items={
-              //   alamat.kabupaten
-              //     ? daftarAlamat
-              //         .find((v) => v.nama === alamat.provinsi)
-              //         ?.kabupaten.find((v) => v.nama === alamat.kabupaten)
-              //         ?.kecamatan
-              //     : []
-              // }
               disabled={!alamat.kabupaten}
             />
           </Grid>

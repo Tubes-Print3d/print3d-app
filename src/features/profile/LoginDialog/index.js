@@ -33,11 +33,10 @@ function LoginDialog({ open, onClose, registerMode, ...props }) {
     password: "",
     rePassword: "",
     roles: [],
-    listMaterial: [],
     alamat: {
-      provinsi: "",
-      kabupaten: "",
-      kecamatan: "",
+      provinsi: null,
+      kabupaten: null,
+      kecamatan: null,
       kodepos: "",
       alamat: "",
       koordinat: {
@@ -72,14 +71,10 @@ function LoginDialog({ open, onClose, registerMode, ...props }) {
       onSubmit: async (values) => {
         const packed = {
           ...values,
-          listMaterial: values.listMaterial.map((jenis) => ({
-            jenis,
-            tersedia: true,
-          })),
         };
         delete packed["rePassword"];
         if (!values.roles.includes("pencetak")) {
-          delete packed.listMaterial;
+          // delete packed.listMaterial;
           delete packed.alamat;
         }
         try {
@@ -88,7 +83,11 @@ function LoginDialog({ open, onClose, registerMode, ...props }) {
           enqueueSnackbar(`Selamat datang, ${payload.nama}`, {
             variant: "success",
           });
-          history.push(history.location.state?.from?.pathname || "/produk");
+          history.push(
+            history.location.state?.from
+              ? history.location.state.from.pathname
+              : "/produk"
+          );
         } catch (error) {
           for (const err of error.data.error) {
             enqueueSnackbar(err.msg, { variant: "error" });
@@ -109,7 +108,11 @@ function LoginDialog({ open, onClose, registerMode, ...props }) {
           enqueueSnackbar(`Selamat datang kembali, ${payload.nama}`, {
             variant: "success",
           });
-          history.push(history.location.state?.from?.pathname || "/produk");
+          history.push(
+            history.location.state?.from
+              ? history.location.state.from.pathname
+              : "/produk"
+          );
         } catch (error) {
           enqueueSnackbar(error.data.error.msg, { variant: "error" });
         }
